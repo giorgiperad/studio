@@ -3,7 +3,7 @@ import './globals.css'
 
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
-import ThemeMenu from '@/components/Theme/ThemeMenu'
+
 import MagneticCursor from '@/components/VisualFX/MagneticCursor'
 import GrainOverlay from '@/components/VisualFX/GrainOverlay'
 import GradientBg from '@/components/VisualFX/GradientBg'
@@ -59,7 +59,7 @@ export default function RootLayout({
           <Navbar />
         </header>
         {children}
-        <ThemeMenu />
+
         <Footer />
       </body>
     </html>
