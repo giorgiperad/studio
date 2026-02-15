@@ -1,13 +1,9 @@
 import type { Metadata } from 'next'
 import './globals.css'
 
-
-import AnimatedGradient from '@/components/backgrounds/AnimatedGradient'
-import ParticleBackground from '@/components/backgrounds/ParticleBackground'
-import FilmGrain from '@/components/backgrounds/FilmGrain'
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
-import MagneticCursor from '@/components/VisualFX/MagneticCursor'
+import ThemeMenu from '@/components/Theme/ThemeMenu'
 import { Fira_Code } from 'next/font/google'
 
 const firaCode = Fira_Code({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] })
@@ -50,17 +46,11 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="dark">
       <body className={`${firaCode.className}`}>
-        <script src="/src/app/smooth-scroll.js" defer />
-        {/* Background Effects - არ ცვლის არაფერს შენს დიზაინში! */}
-        <AnimatedGradient />
-        <ParticleBackground />
-        <FilmGrain />
-        <MagneticCursor />
         <header>
           <Navbar />
         </header>
         {children}
-
+        <ThemeMenu />
         <Footer />
       </body>
     </html>
