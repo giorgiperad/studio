@@ -1,4 +1,4 @@
-// src/hooks/useScrollFadeIn.ts
+"use client";
 import { useRef, useEffect } from 'react';
 
 export function useScrollFadeIn(delay = 0) {

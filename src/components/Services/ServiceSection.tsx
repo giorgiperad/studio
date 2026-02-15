@@ -1,11 +1,13 @@
+
 import { serviceData } from '../../appData'
 import SectionHeading from '../SectionHeading/SectionHeading'
 import ServiceCard from './ServiceCard'
+import { useScrollFadeIn } from '@/hooks/useScrollFadeIn';
 
 const ServiceSection = () => {
+  const fadeRef = useScrollFadeIn(0.3);
   return (
-      const fadeRef = useScrollFadeIn(0.3);
-      <section id="services" className="my-14 glass" ref={fadeRef}>
+    <section id="services" className="my-14 glass" ref={fadeRef}>
       <SectionHeading
         title="// სერვისები / შეთავაზებები:"
         subtitle="გთავაზობთ სერვისების ფართო სპექტრს, რათა მიიღოთ საუკეთესო კოდი და დარჩეთ კონკურენტუნარიანი."

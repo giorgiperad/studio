@@ -1,3 +1,4 @@
+"use client";
 import { skillList } from '@/appData'
 import BlogSection from '@/components/Blogs/BlogSection'
 import ContactSection from '@/components/Contact/ContactSection'
