@@ -312,6 +312,7 @@ body { cursor: none !important; }
   border: 1px solid rgba(255,255,255,0.1) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
   background: linear-gradient(120deg, #002244 0%, #00ffff 40%, #ffff00 80%, #000000 100%);
+}
 
 /* --- Card Hover Effects --- */
 /* === Card Hover Effects === */
@@ -324,7 +325,7 @@ body { cursor: none !important; }
 .card::before, .glass-card::before {
   content: '';
   background: radial-gradient(circle at 20% 30%, #00ffff44 0%, transparent 60%),
-              radial-gradient(circle at 80% 70%, #ffff0033 0%, transparent 60%),
+              radial-gradient(circle at 80% 70%, #ffff0033 0%, transparent 60%);
   pointer-events: none;
   background: radial-gradient(circle at var(--mouse-x,50%) var(--mouse-y,50%), rgba(0,255,255,0.08), transparent 50%);
   z-index: 0;
