@@ -35,7 +35,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="bg-primary/80 backdrop-blur-md border-border h-16 overflow-hidden border-b shadow-md">
+    <nav className="navbar-glass fixed top-0 left-0 w-full h-16 z-50 transition-all duration-300">
       <div className="mx-auto flex h-full w-dvw max-w-[1200px] items-center justify-between px-4 py-1">
         {isVisible ? (
           <div className="text-primary-content md:hidden font-mono tracking-widest text-lg">_მენიუ</div>
@@ -43,7 +43,7 @@ const Navbar = () => {
           <Link href="/">
             <div className="animate-fade-up text-primary-content relative flex items-center gap-3 transition-all duration-300 md:static">
               <Logo />
-              <span className="text-accent font-extrabold text-xl tracking-tight drop-shadow-sm">kima.ge</span>
+              <span className="gradient-text font-extrabold text-xl tracking-tight drop-shadow-sm">kima.ge</span>
             </div>
           </Link>
         )}
@@ -58,16 +58,22 @@ const Navbar = () => {
           </button>
         </div>
 
+        {/* Mobile menu overlay */}
+        {isVisible && (
+          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 animate-fade-in md:hidden" onClick={toggleMenu}></div>
+        )}
         <ul
-          className={`${isVisible ? 'flex' : 'hidden'} animate-fade-in bg-primary/90 backdrop-blur-xl absolute top-16 left-0 z-10 h-dvh w-dvw flex-col md:static md:top-0 md:flex md:h-full md:w-[72%] md:flex-row lg:w-[70%] rounded-b-3xl shadow-2xl`}> 
+          className={`navbar-menu ${isVisible ? 'flex' : 'hidden'} animate-fade-in absolute top-16 left-0 z-50 h-dvh w-dvw flex-col md:static md:top-0 md:flex md:h-full md:w-[72%] md:flex-row lg:w-[70%] rounded-b-3xl shadow-2xl`}
+        >
           {navItems.map(({ label, href }) => (
             <li
               key={href}
               onClick={() => setIsVisible(false)}
-              className="border-border flex items-center border-b px-4 text-2xl md:border-y-0 md:border-e md:text-base md:first:border-s md:last:ml-auto md:last:border-none md:last:px-0 lg:px-8">
+              className="border-border flex items-center border-b px-4 text-2xl md:border-y-0 md:border-e md:text-base md:first:border-s md:last:ml-auto md:last:border-none md:last:px-0 lg:px-8 relative group">
               <Link
                 href={href}
-                className={`text-primary-content hover:text-accent w-full py-7 transition-all duration-200 md:py-0 font-semibold tracking-wide ${pathname === href ? 'text-accent cursor-text' : ''}`}>
+                className={`nav-link w-full py-7 transition-all duration-200 md:py-0 font-semibold tracking-wide ${pathname === href ? 'active-nav-link' : ''}`}
+              >
                 {label}
               </Link>
             </li>
