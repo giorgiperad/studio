@@ -51,7 +51,7 @@ export default function RootLayout({
     <html lang="en" data-theme="dark">
       <body className={`${firaCode.className}`}>
         <script src="/src/app/smooth-scroll.js" defer />
-        <GradientBg />
+        {/* <GradientBg /> removed for solid black background */}
         <ParticleBg />
         <GrainOverlay />
         <MagneticCursor />

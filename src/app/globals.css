@@ -19,9 +19,7 @@
   width: 100vw;
   height: 100vh;
   z-index: -2;
-  background: linear-gradient(45deg, #1a0033, #0a1929, #002244, #1a0033);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  background: var(--dark);
   pointer-events: none;
 }
 @keyframes gradientShift {
@@ -587,7 +585,7 @@ html {
 
 body {
   font-family: 'DM Sans', 'Inter', 'Fira Code', monospace, sans-serif;
-  background: var(--dark);
+  background: var(--dark) !important;
   color: var(--light);
   overflow-x: hidden;
   cursor: none;
