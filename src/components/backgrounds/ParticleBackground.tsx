@@ -19,6 +19,11 @@ export default function ParticleBackground() {
     setCanvasSize()
     window.addEventListener('resize', setCanvasSize)
 
+
+    // Capture width/height at creation
+    let width = canvas.width
+    let height = canvas.height
+
     // Particle class
     class Particle {
       x: number
@@ -27,9 +32,9 @@ export default function ParticleBackground() {
       vy: number
       radius: number
 
-      constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+      constructor(width: number, height: number) {
+        this.x = Math.random() * width
+        this.y = Math.random() * height
         this.vx = (Math.random() - 0.5) * 0.5
         this.vy = (Math.random() - 0.5) * 0.5
         this.radius = Math.random() * 2 + 1
@@ -38,10 +43,9 @@ export default function ParticleBackground() {
       update() {
         this.x += this.vx
         this.y += this.vy
-
         // Bounce off edges
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1
+        if (this.x < 0 || this.x > width) this.vx *= -1
+        if (this.y < 0 || this.y > height) this.vy *= -1
       }
 
       draw() {
@@ -56,9 +60,8 @@ export default function ParticleBackground() {
     // Create particles
     const particles: Particle[] = []
     const particleCount = 80
-
     for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle())
+      particles.push(new Particle(width, height))
     }
 
     // Connect particles
