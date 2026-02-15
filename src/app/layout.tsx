@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 
-import AnimatedGradient from './components/backgrounds/AnimatedGradient'
+import AnimatedGradient from '@/components/backgrounds/AnimatedGradient'
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
 import MagneticCursor from '@/components/VisualFX/MagneticCursor'
