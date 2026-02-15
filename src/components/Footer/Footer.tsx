@@ -4,7 +4,7 @@ import Logo from '../Navbar/Logo'
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary/80 backdrop-blur-2xl relative flex min-h-[560px] flex-col justify-between gap-20 overflow-hidden px-4 py-14 md:p-14 rounded-t-3xl shadow-2xl border-t border-white/10">
+    <footer className="footer">
       <div className="relative z-20 grid grid-cols-1 items-start gap-20 md:grid-cols-2 md:gap-12">
         <div className="glass-card rounded-2xl p-8 shadow-lg border border-white/10">
           <h5 className="mb-8 flex items-center gap-2">

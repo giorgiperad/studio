@@ -9,7 +9,7 @@ interface BlogSectionProps {
 
 const BlogSection = async ({ posts }: BlogSectionProps) => {
   return (
-    <section id="blogs" className="my-14">
+    <section id="blogs" className="section">
       <SectionHeading
         title="// ჩემი ბლოგები"
         subtitle="წაიკითხეთ ჩემი უახლესი ბლოგ პოსტები ვებ დეველოპმენტზე, JavaScript-ზე, React-ზე და სხვა თემებზე."
