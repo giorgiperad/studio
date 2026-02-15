@@ -10,7 +10,7 @@ const Hero = () => {
   const role = useRoleSwitcher({ roles: ['FULLSTACK DEVELOPER', 'INDIE HACKER', 'SOLOPRENEUR'] })
 
   return (
-    <section className="relative min-h-[calc(100dvh-4rem)] bg-gradient-to-br from-primary/80 via-primary/60 to-accent/30 bg-no-repeat overflow-hidden">
+    <section className="hero relative min-h-screen overflow-hidden" style={{ background: 'var(--dark)' }}>
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-4 px-4 pt-16 pb-14 md:grid-cols-2 lg:p-8">
         <div className="flex min-h-48 flex-col justify-between lg:min-h-56 lg:max-w-[33.75rem] glass-card shadow-xl rounded-3xl p-8 backdrop-blur-md bg-white/10 border border-white/10">
           <h1>
