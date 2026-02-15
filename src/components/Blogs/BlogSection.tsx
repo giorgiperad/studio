@@ -9,7 +9,8 @@ interface BlogSectionProps {
 
 const BlogSection = async ({ posts }: BlogSectionProps) => {
   return (
-    <section id="blogs" className="section">
+      const fadeRef = useScrollFadeIn(0.1);
+      <section id="blogs" className="section glass" ref={fadeRef}>
       <SectionHeading
         title="// ჩემი ბლოგები"
         subtitle="წაიკითხეთ ჩემი უახლესი ბლოგ პოსტები ვებ დეველოპმენტზე, JavaScript-ზე, React-ზე და სხვა თემებზე."

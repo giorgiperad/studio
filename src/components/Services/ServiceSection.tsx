@@ -4,7 +4,8 @@ import ServiceCard from './ServiceCard'
 
 const ServiceSection = () => {
   return (
-    <section id="services" className="my-14">
+      const fadeRef = useScrollFadeIn(0.3);
+      <section id="services" className="my-14 glass" ref={fadeRef}>
       <SectionHeading
         title="// სერვისები / შეთავაზებები:"
         subtitle="გთავაზობთ სერვისების ფართო სპექტრს, რათა მიიღოთ საუკეთესო კოდი და დარჩეთ კონკურენტუნარიანი."

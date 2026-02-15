@@ -13,7 +13,8 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({ testimonials })
   const [activeCard, setActiveCard] = useState(0)
 
   return (
-    <section id="testimonials">
+      const fadeRef = useScrollFadeIn(0.4);
+      <section id="testimonials" className="glass" ref={fadeRef}>
       <SectionHeading
         title="// შეფასებები"
         subtitle="ნუ ენდობით მხოლოდ ჩვენს სიტყვებს - იხილეთ რას ამბობენ ჩვენი მომხმარებლები თავიანთ გამოცდილებაზე."

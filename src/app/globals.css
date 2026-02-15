@@ -1,14 +1,18 @@
 /* === Custom Color Palette === */
 
+
 :root {
-  --primary: #0ff;
-  --secondary: #f0f;
-  --accent: #ff0;
-  --dark: #050505;
-  --darker: #000000;
-  --light: #fff;
-  --gray: #888;
-  --glow: rgba(0,255,255,0.5);
+  --primary: #00ffff;         /* Cyan */
+  --secondary: #ff00ff;       /* Magenta */
+  --accent: #ffff00;          /* Yellow */
+  --dark: #050505;            /* Background dark */
+  --darker: #000000;          /* Pure black */
+  --light: #ffffff;           /* White */
+  --gray: #888888;            /* Text secondary */
+  --muted: #666666;           /* Text muted */
+  --glow-cyan: rgba(0,255,255,0.5);      /* Cyan glow */
+  --glow-magenta: rgba(255,0,255,0.5);   /* Magenta glow */
+  --glow-yellow: rgba(255,255,0,0.5);    /* Yellow glow */
 }
 
 /* === Animated Gradient Background === */
@@ -134,8 +138,8 @@ a:hover {
 }
 
 /* === Gradient Text for Headings === */
-h1, h2, .hero-title {
-  background: linear-gradient(135deg, #ffffff 0%, var(--primary) 50%, var(--secondary) 100%);
+h1, h2, .hero-title, .gradient-heading {
+  background: linear-gradient(135deg, #ffffff 0%, #00ffff 50%, #ff00ff 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -145,6 +149,12 @@ h1, h2, .hero-title {
 @keyframes gradientFlow {
   0% { background-position: 0% center; }
   100% { background-position: 200% center; }
+}
+
+/* Subtle glow for h3 headings */
+h3 {
+  color: #00ffff;
+  text-shadow: 0 0 20px rgba(0,255,255,0.3);
 }
 
 /* === Accent Color Highlights === */
@@ -306,10 +316,12 @@ body { cursor: none !important; }
 }
 
 /* --- Card Hover Effects --- */
+/* === Card Hover Effects === */
 .card:hover, .glass-card:hover {
-  transform: translateY(-10px) scale(1.03) !important;
-  border-color: rgba(0,255,255,0.3) !important;
-  box-shadow: 0 20px 60px rgba(0,255,255,0.2) !important;
+  transform: translateY(-10px);
+  border-color: rgba(0,255,255,0.3);
+  box-shadow: 0 20px 60px rgba(0,255,255,0.2);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card::before, .glass-card::before {
   content: '';
@@ -335,27 +347,57 @@ h1, h2, .gradient-text {
 }
 
 /* --- Button Neon Glow & Shine --- */
+
+/* === Primary Button === */
 .button, button, .btn {
-  box-shadow: 0 0 40px rgba(0,255,255,0.5) !important;
+  background: #00ffff;
+  color: #000000;
+  padding: 18px 45px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  box-shadow: 0 0 40px rgba(0,255,255,0.5);
   position: relative;
   overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button:hover, button:hover, .btn:hover {
-  box-shadow: 0 0 60px rgba(0,255,255,0.8) !important;
-  transform: translateY(-3px) scale(1.03) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 0 60px rgba(0,255,255,0.8), 0 10px 30px rgba(0,255,255,0.3);
 }
 .button::before, button::before, .btn::before {
   content: '';
   position: absolute;
-  top: -50%; left: -50%;
-  width: 200%; height: 200%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 60%, transparent 100%);
-  transform: skewX(-20deg) translateX(-100%);
-  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s ease;
   pointer-events: none;
 }
 .button:hover::before, button:hover::before, .btn:hover::before {
-  transform: skewX(-20deg) translateX(100%);
+  left: 100%;
+}
+
+/* === Secondary Button === */
+.button-secondary, .btn-secondary {
+  background: transparent;
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 18px 45px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.button-secondary:hover, .btn-secondary:hover {
+  background: #00ffff;
+  color: #000000;
+  box-shadow: 0 0 60px rgba(0,255,255,0.8), 0 10px 30px rgba(0,255,255,0.3);
 }
 
 /* --- Nav Enhancements --- */
@@ -366,16 +408,23 @@ nav {
 nav a {
   position: relative;
   overflow: hidden;
+  color: #ffffff;
+  transition: color 0.3s, text-shadow 0.3s;
 }
 nav a::after {
   content: '';
-  display: block;
   position: absolute;
-  left: 0; bottom: 0;
-  width: 0; height: 2px;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
   background: #00ffff;
-  box-shadow: 0 0 10px #00ffff;
-  transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 0 10px rgba(0,255,255,0.5);
+  transition: width 0.3s ease;
+}
+nav a:hover, nav a:focus {
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0,255,255,0.5);
 }
 nav a:hover::after, nav a:focus::after {
   width: 100%;
@@ -846,6 +895,8 @@ body {
 /* === Footer Modern === */
 footer {
   padding: 80px 60px 40px;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 .footer-content {
@@ -865,13 +916,31 @@ footer {
   gap: 30px;
 }
 .social-links a {
-  color: var(--light);
+  color: #ffffff;
   font-size: 1.5em;
   transition: all 0.3s ease;
 }
 .social-links a:hover {
-  color: var(--primary);
-  text-shadow: 0 0 20px var(--glow);
+  color: #00ffff;
+  text-shadow: 0 0 20px rgba(0,255,255,0.5);
+  transform: scale(1.1);
+}
+/* === Custom Selection Color === */
+::selection {
+  background: rgba(0,255,255,0.3);
+  color: #ffffff;
+}
+
+/* === Custom Scrollbar === */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #00ffff;
+  border-radius: 5px;
 }
 
 section, .glass {
@@ -927,18 +996,19 @@ button:hover, .btn:hover {
 }
 
 input, textarea, select {
-  background: rgba(24, 28, 37, 0.85);
-  color: var(--pc);
-  border-radius: 0.75rem;
-  border: 1px solid #23283a;
-  padding: 0.75em 1em;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
   font-size: 1rem;
   transition: border 0.2s, box-shadow 0.2s;
 }
 input:focus, textarea:focus, select:focus {
-  border: 1.5px solid #7f9cf5;
+  border-color: #00ffff;
+  box-shadow: 0 0 20px rgba(0,255,255,0.3);
   outline: none;
-  box-shadow: 0 0 0 2px #7f9cf555;
 }
 
 .rehype-code-title {

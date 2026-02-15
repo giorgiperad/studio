@@ -3,6 +3,8 @@ import './globals.css'
 
 
 import AnimatedGradient from '@/components/backgrounds/AnimatedGradient'
+import ParticleBackground from '@/components/backgrounds/ParticleBackground'
+import FilmGrain from '@/components/backgrounds/FilmGrain'
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
 import MagneticCursor from '@/components/VisualFX/MagneticCursor'
@@ -51,6 +53,8 @@ export default function RootLayout({
         <script src="/src/app/smooth-scroll.js" defer />
         {/* Background Effects - არ ცვლის არაფერს შენს დიზაინში! */}
         <AnimatedGradient />
+        <ParticleBackground />
+        <FilmGrain />
         <MagneticCursor />
         <header>
           <Navbar />
