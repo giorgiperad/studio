@@ -9,8 +9,11 @@ interface BlogSectionProps {
 
 const BlogSection = async ({ posts }: BlogSectionProps) => {
   return (
-    <section id="blogs">
-      <SectionHeading title="// Latest Blogs" />
+    <section id="blogs" className="my-14">
+      <SectionHeading
+        title="// ჩემი ბლოგები"
+        subtitle="წაიკითხეთ ჩემი უახლესი ბლოგ პოსტები ვებ დეველოპმენტზე, JavaScript-ზე, React-ზე და სხვა თემებზე."
+      />
 
       <div className="my-8 grid grid-cols-1 gap-8 md:my-12 lg:grid-cols-[60%_1fr]">
         <BlogCard key={posts[0].slug} index={0} post={posts[0]} large />

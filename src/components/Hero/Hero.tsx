@@ -14,26 +14,26 @@ const Hero = () => {
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-4 px-4 pt-12 pb-10 md:grid-cols-2 lg:p-4">
         <div className="flex min-h-48 flex-col justify-between lg:min-h-56 lg:max-w-[33.75rem]">
           <h1>
-            <span className="text-neutral mb-2 block text-3xl font-bold">Hi - I'm John Doe</span>
+            <span className="text-neutral mb-2 block text-3xl font-bold">გამარჯობა - მე ვარ ჯონ დოუ</span>
             <span className="text-accent block text-[1.75rem] font-bold">{role}</span>
           </h1>
 
           <h2 className="text-neutral mt-3">
-            Crafting innovative solutions to solve real-world problems
+            ინოვაციური გადაწყვეტილებების შექმნა რეალური პრობლემების გადასაჭრელად
           </h2>
 
           <div className="mt-6 flex flex-wrap gap-6">
             <a
               href="#"
-              aria-label="Connect with me"
+              aria-label="დამიკავშირდით"
               className="bg-accent min-w-32 cursor-pointer rounded-lg px-[14px] py-[10px] text-center text-sm font-medium text-[#00071E]">
-              Hire Me
+              დამიქირავე
             </a>
             <a
               href="#"
-              aria-label="View LinkedIn Profile"
+              aria-label="LinkedIn პროფილის ნახვა"
               className="text-neutral bg-secondary cursor-pointer rounded-lg px-[14px] py-[10px] text-sm">
-              LinkedIn Profile
+              LinkedIn პროფილი
             </a>
           </div>
         </div>

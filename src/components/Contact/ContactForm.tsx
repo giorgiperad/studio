@@ -17,26 +17,26 @@ const ContactForm = () => {
 
   return (
     <form action={formAction}>
-      <Input label="Full name" id="name" name="name" placeholder="Your name here" required />
+      <Input label="სრული სახელი" id="name" name="name" placeholder="თქვენი სახელი" required />
       <Input
-        label="Email address"
+        label="ელ.ფოსტა"
         id="email"
         type="email"
         name="email"
-        placeholder="Your email address here"
+        placeholder="თქვენი ელ.ფოსტა"
         required
       />
-      <Input label="Subject" id="subject" name="subject" placeholder="Your subject here" />
+      <Input label="თემა" id="subject" name="subject" placeholder="შეიყვანეთ თემა" />
       <Textarea
-        label="Message"
+        label="მესიჯი"
         id="message"
         name="message"
-        placeholder="Your message here"
+        placeholder="თქვენი მესიჯი"
         rows={7}
         required
       />
       {!status?.success && <p className="my-2 font-light text-red-600">{status?.message}</p>}
-      <Button text={isPending ? 'Submitting...' : 'Submit'} disabled={isPending} />
+      <Button text={isPending ? 'იგზავნება...' : 'გაგზავნა'} disabled={isPending} />
     </form>
   )
 }

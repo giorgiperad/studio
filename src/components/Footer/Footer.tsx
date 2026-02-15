@@ -48,15 +48,15 @@ const Footer = () => {
             ))}
           </ul>
           <p className="text-tertiary-content flex flex-col self-end text-right text-xs md:text-center">
-            <span>© 2025 — Copyright</span>
-            <span>All Rights reserved</span>
+            <span>© 2025 — საავტორო უფლებები</span>
+            <span>ყველა უფლება დაცულია</span>
           </p>
         </div>
 
         <div className="flex flex-col justify-between gap-[200px] md:flex-row md:gap-8">
           <div className="space-y-10 md:self-end">
             <div className="flex flex-col">
-              <h5 className="text-neutral mb-4 text-lg font-medium">Contact Us</h5>
+              <h5 className="text-neutral mb-4 text-lg font-medium">დაგვიკავშირდით</h5>
               <a
                 href="mailto:johndoe@gmail.com"
                 className="text-tertiary-content hover:text-neutral text-sm font-light transition-colors duration-300">

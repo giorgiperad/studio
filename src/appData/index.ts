@@ -102,35 +102,35 @@ export const serviceData = [
 // Skill List
 export const skillList = [
   {
-    name: 'JavaScript',
+    name: 'ჯავასკრიპტი',
     icon: JavaScriptIcon,
   },
   {
-    name: 'TypeScript',
+    name: 'ტაიპსკრიპტი',
     icon: TypescriptIcon,
   },
   {
-    name: 'React.js',
+    name: 'რაქტი',
     icon: ReactIcon,
   },
   {
-    name: 'Next.js',
+    name: 'ნექსტი',
     icon: NextjsIcon,
   },
   {
-    name: 'Node.js',
+    name: 'ნოუდი',
     icon: NodejsIcon,
   },
   {
-    name: 'Express.js',
+    name: 'ექსპრესი',
     icon: ExpressjsIcon,
   },
   {
-    name: 'Nest.js',
+    name: 'ნესტი',
     icon: NestjsIcon,
   },
   {
-    name: 'Socket.io',
+    name: 'სოკეტი',
     icon: SocketIcon,
   },
 ]
