@@ -2,81 +2,121 @@
 import { useEffect, useRef } from 'react'
 
 export default function ParticleBackground() {
-  const ref = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
   useEffect(() => {
-    if (typeof window === 'undefined') return
-    const canvas = ref.current
+    const canvas = canvasRef.current
     if (!canvas) return
+
     const ctx = canvas.getContext('2d')
-    let dpr = window.devicePixelRatio || 1
-    let width = window.innerWidth
-    let height = window.innerHeight
-    let particles: Particle[] = []
-    const PARTICLE_COUNT = 80
-    function resize() {
-      width = window.innerWidth
-      height = window.innerHeight
-      if (!canvas) return
-      canvas.width = width * dpr
-      canvas.height = height * dpr
-      canvas.style.width = width + 'px'
-      canvas.style.height = height + 'px'
+    if (!ctx) return
+
+    // Set canvas size
+    const setCanvasSize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
     }
-    resize()
-    window.addEventListener('resize', resize)
+    setCanvasSize()
+    window.addEventListener('resize', setCanvasSize)
+
+    // Particle class
     class Particle {
-      x: number; y: number; vx: number; vy: number; r: number
+      x: number
+      y: number
+      vx: number
+      vy: number
+      radius: number
+
       constructor() {
-        this.x = Math.random() * width
-        this.y = Math.random() * height
-        this.vx = (Math.random() - 0.5) * 0.7
-        this.vy = (Math.random() - 0.5) * 0.7
-        this.r = 2
+        this.x = Math.random() * canvas.width
+        this.y = Math.random() * canvas.height
+        this.vx = (Math.random() - 0.5) * 0.5
+        this.vy = (Math.random() - 0.5) * 0.5
+        this.radius = Math.random() * 2 + 1
       }
-      move() {
+
+      update() {
         this.x += this.vx
         this.y += this.vy
-        if (this.x < 0 || this.x > width) this.vx *= -1
-        if (this.y < 0 || this.y > height) this.vy *= -1
+
+        // Bounce off edges
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1
       }
-      draw(ctx: CanvasRenderingContext2D) {
+
+      draw() {
+        if (!ctx) return
         ctx.beginPath()
-        ctx.arc(this.x * dpr, this.y * dpr, this.r * dpr, 0, 2 * Math.PI)
-        ctx.fillStyle = 'rgba(0,255,255,0.5)'
-        ctx.globalAlpha = 0.4
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        ctx.fillStyle = 'rgba(0, 255, 255, 0.5)'
         ctx.fill()
-        ctx.globalAlpha = 1
       }
     }
-    particles = Array.from({ length: PARTICLE_COUNT }, () => new Particle())
-    function animate() {
-      if (!ctx) return
-      ctx.clearRect(0, 0, width * dpr, height * dpr)
+
+    // Create particles
+    const particles: Particle[] = []
+    const particleCount = 80
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle())
+    }
+
+    // Connect particles
+    const connectParticles = () => {
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i], b = particles[j]
-          const dx = a.x - b.x, dy = a.y - b.y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 150) {
+          const dx = particles[i].x - particles[j].x
+          const dy = particles[i].y - particles[j].y
+          const distance = Math.sqrt(dx * dx + dy * dy)
+
+          if (distance < 150) {
+            if (!ctx) return
             ctx.beginPath()
-            ctx.moveTo(a.x * dpr, a.y * dpr)
-            ctx.lineTo(b.x * dpr, b.y * dpr)
-            ctx.strokeStyle = `rgba(0,255,255,${0.4 * (1 - dist / 150)})`
-            ctx.lineWidth = 1 * dpr
+            ctx.strokeStyle = `rgba(0, 255, 255, ${0.3 * (1 - distance / 150)})`
+            ctx.lineWidth = 0.5
+            ctx.moveTo(particles[i].x, particles[i].y)
+            ctx.lineTo(particles[j].x, particles[j].y)
             ctx.stroke()
           }
         }
       }
-      for (const p of particles) {
-        p.move()
-        p.draw(ctx)
-      }
+    }
+
+    // Animation loop
+    const animate = () => {
+      if (!ctx) return
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      particles.forEach(particle => {
+        particle.update()
+        particle.draw()
+      })
+
+      connectParticles()
       requestAnimationFrame(animate)
     }
+
     animate()
+
+    // Cleanup
     return () => {
-      window.removeEventListener('resize', resize)
+      window.removeEventListener('resize', setCanvasSize)
     }
   }, [])
-  return <canvas ref={ref} style={{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',zIndex:-1,opacity:0.4,pointerEvents:'none'}} aria-hidden="true" />
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: -1,
+        opacity: 0.4,
+        pointerEvents: 'none'
+      }}
+    />
+  )
 }
