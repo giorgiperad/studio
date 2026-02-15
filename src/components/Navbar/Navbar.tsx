@@ -12,16 +12,16 @@ const navItems = [
     href: '/',
   },
   {
-    label: '_projects',
+    label: '_პროექტები',
     href: '/#projects',
   },
   {
-    label: '_services',
+    label: '_სერვისები',
     href: '/#services',
   },
-  { label: '_blogs', href: '/blogs' },
+  { label: '_ბლოგები', href: '/blogs' },
   {
-    label: '_contact-me',
+    label: '_კონტაქტი',
     href: '/#contact',
   },
 ]
@@ -38,12 +38,12 @@ const Navbar = () => {
     <nav className="bg-primary/80 backdrop-blur-md border-border h-16 overflow-hidden border-b shadow-md">
       <div className="mx-auto flex h-full w-dvw max-w-[1200px] items-center justify-between px-4 py-1">
         {isVisible ? (
-          <div className="text-primary-content md:hidden font-mono tracking-widest text-lg">_menu</div>
+          <div className="text-primary-content md:hidden font-mono tracking-widest text-lg">_მენიუ</div>
         ) : (
           <Link href="/">
             <div className="animate-fade-up text-primary-content relative flex items-center gap-3 transition-all duration-300 md:static">
               <Logo />
-              <span className="text-accent font-extrabold text-xl tracking-tight drop-shadow-sm">john_doe</span>
+              <span className="text-accent font-extrabold text-xl tracking-tight drop-shadow-sm">kima.ge</span>
             </div>
           </Link>
         )}
