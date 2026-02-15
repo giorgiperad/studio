@@ -1,9 +1,16 @@
+if (typeof window !== 'undefined') {
+  import('./smooth-scroll.js')
+}
 import type { Metadata } from 'next'
 import './globals.css'
 
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
 import ThemeMenu from '@/components/Theme/ThemeMenu'
+import MagneticCursor from './MagneticCursor'
+import GrainOverlay from './GrainOverlay'
+import GradientBg from './GradientBg'
+import ParticleBg from './ParticleBg'
 import { Fira_Code } from 'next/font/google'
 
 const firaCode = Fira_Code({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] })
@@ -46,6 +53,10 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="dark">
       <body className={`${firaCode.className}`}>
+        <GradientBg />
+        <ParticleBg />
+        <GrainOverlay />
+        <MagneticCursor />
         <header>
           <Navbar />
         </header>

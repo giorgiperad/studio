@@ -1,3 +1,184 @@
+/* --- Custom Magnetic Cursor --- */
+#magnetic-cursor-outer {
+  position: fixed;
+  top: 0; left: 0;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  border: 2px solid #00ffff;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 0 0 #00ffff44;
+  will-change: transform;
+}
+#magnetic-cursor-inner {
+  position: fixed;
+  top: 0; left: 0;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #00ffff;
+  pointer-events: none;
+  z-index: 10001;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+#magnetic-cursor-outer.magnetic-cursor-hover {
+  width: 60px; height: 60px;
+  border-width: 3px;
+  box-shadow: 0 0 40px #00ffff99;
+  transition: width 0.2s, height 0.2s, border 0.2s, box-shadow 0.2s;
+}
+
+body { cursor: none !important; }
+
+/* --- Film Grain Overlay --- */
+.grain {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  opacity: 0.3;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* --- Animated Gradient Background --- */
+.gradient-bg {
+  position: fixed;
+  width: 100vw; height: 100vh;
+  top: 0; left: 0;
+  z-index: -2;
+  background: linear-gradient(45deg, #1a0033, #0a1929, #002244, #1a0033);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Glassmorphism Utility --- */
+.glass {
+  background: rgba(255,255,255,0.03) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+}
+
+/* --- Card Hover Effects --- */
+.card:hover, .glass-card:hover {
+  transform: translateY(-10px) scale(1.03) !important;
+  border-color: rgba(0,255,255,0.3) !important;
+  box-shadow: 0 20px 60px rgba(0,255,255,0.2) !important;
+}
+.card::before, .glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--mouse-x,50%) var(--mouse-y,50%), rgba(0,255,255,0.08), transparent 50%);
+  z-index: 0;
+  transition: background 0.2s;
+}
+
+/* --- Gradient Text for Headings --- */
+h1, h2, .gradient-text {
+  background: linear-gradient(135deg, #00ffff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: gradientFlow 3s linear infinite;
+}
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* --- Button Neon Glow & Shine --- */
+.button, button, .btn {
+  box-shadow: 0 0 40px rgba(0,255,255,0.5) !important;
+  position: relative;
+  overflow: hidden;
+}
+.button:hover, button:hover, .btn:hover {
+  box-shadow: 0 0 60px rgba(0,255,255,0.8) !important;
+  transform: translateY(-3px) scale(1.03) !important;
+}
+.button::before, button::before, .btn::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 60%, transparent 100%);
+  transform: skewX(-20deg) translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
+}
+.button:hover::before, button:hover::before, .btn:hover::before {
+  transform: skewX(-20deg) translateX(100%);
+}
+
+/* --- Nav Enhancements --- */
+nav {
+  backdrop-filter: blur(20px) !important;
+  background: rgba(5,5,5,0.7) !important;
+}
+nav a {
+  position: relative;
+  overflow: hidden;
+}
+nav a::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0; height: 2px;
+  background: #00ffff;
+  box-shadow: 0 0 10px #00ffff;
+  transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+nav a:hover::after, nav a:focus::after {
+  width: 100%;
+}
+
+/* --- Project Card Image Effects --- */
+.project-image {
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.project-card:hover .project-image {
+  transform: scale(1.1);
+}
+.project-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+}
+
+/* --- Icon Animations --- */
+.service-icon, .tech-icon {
+  transition: transform 0.3s ease;
+}
+.card:hover .service-icon, .glass-card:hover .service-icon {
+  transform: rotateY(360deg);
+}
+
+/* --- Fade In Up Animation --- */
+.fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Page Load Fade In --- */
+body {
+  animation: fadeIn 0.5s ease-in;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 @import 'tailwindcss';
 
 [data-theme='light'] {
