@@ -1,19 +1,15 @@
-
-"use client";
 import { BlogPost } from '@/lib/types'
 import SectionHeading from '../SectionHeading/SectionHeading'
 import Divider from '../UI/Divider'
 import BlogCard from './BlogCard'
-import { useScrollFadeIn } from '@/hooks/useScrollFadeIn';
 
 interface BlogSectionProps {
   posts: BlogPost[]
 }
 
-const BlogSection = ({ posts }: BlogSectionProps) => {
-  const fadeRef = useScrollFadeIn(0.1);
+const BlogSection = async ({ posts }: BlogSectionProps) => {
   return (
-    <section id="blogs" className="section glass" ref={fadeRef}>
+    <section id="blogs" className="my-14">
       <SectionHeading
         title="// ჩემი ბლოგები"
         subtitle="წაიკითხეთ ჩემი უახლესი ბლოგ პოსტები ვებ დეველოპმენტზე, JavaScript-ზე, React-ზე და სხვა თემებზე."

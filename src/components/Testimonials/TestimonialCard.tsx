@@ -28,8 +28,8 @@ const TestimonialCard: FC<TestimonialCardProps> = ({
   return (
     <div
       ref={cardRef}
-      className="glass-card bg-white/10 backdrop-blur-lg border border-white/10 flex max-w-full shrink-0 flex-col items-center justify-between gap-4 rounded-2xl shadow-lg p-6 text-center sm:max-w-[425px] transition-transform duration-300 hover:scale-[1.03]">
-      <p className="text-neutral text-center leading-8 text-lg font-medium before:content-['“'] after:content-['”'] opacity-90">
+      className="bg-secondary border-border flex max-w-full shrink-0 flex-col items-center justify-between gap-4 rounded-2xl border p-4 text-center sm:max-w-[425px]">
+      <p className="text-neutral text-center leading-8 before:content-['“'] after:content-['”']">
         {feedback}
       </p>
       <div>

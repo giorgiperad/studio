@@ -1,6 +1,4 @@
-
 'use client'
-import { useScrollFadeIn } from '@/hooks/useScrollFadeIn';
 
 import { Testimonial } from '@/lib/types'
 import { useState } from 'react'
@@ -13,10 +11,9 @@ interface TestimonialSectionProps {
 
 const TestimonialSection: React.FC<TestimonialSectionProps> = ({ testimonials }) => {
   const [activeCard, setActiveCard] = useState(0)
-  const fadeRef = useScrollFadeIn(0.4);
 
   return (
-    <section id="testimonials" className="glass" ref={fadeRef}>
+    <section id="testimonials">
       <SectionHeading
         title="// შეფასებები"
         subtitle="ნუ ენდობით მხოლოდ ჩვენს სიტყვებს - იხილეთ რას ამბობენ ჩვენი მომხმარებლები თავიანთ გამოცდილებაზე."
