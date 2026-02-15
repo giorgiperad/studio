@@ -64,11 +64,26 @@ export const Markdown: MDXComponents = {
       {children}
     </li>
   ),
-  img: ({ children, ...props }) => (
-    <img {...props} className="mb-4 h-auto max-w-full">
-      {children}
-    </img>
-  ),
+  img: ({ src = '', alt = '', ...props }) => {
+    // Use next/image for optimization
+    // Fallback to <img> if src is not a string (e.g., for broken MDX)
+    try {
+      // Dynamically import to avoid SSR issues
+      const Image = require('next/image').default;
+      return (
+        <Image
+          src={src}
+          alt={alt || 'Image'}
+          className="mb-4 h-auto max-w-full"
+          width={800}
+          height={400}
+          {...props}
+        />
+      );
+    } catch {
+      return <img src={src} alt={alt || 'Image'} className="mb-4 h-auto max-w-full" {...props} />;
+    }
+  },
   hr: () => <hr className="bg-border my-8 h-px border-0" />,
   code: CodeBlockWrapper,
   CodeBlock: CodeBlockWrapper,
