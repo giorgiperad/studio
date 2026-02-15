@@ -1,6 +1,3 @@
-"use client"
-import { useRef, useEffect } from 'react'
-import { motion } from 'framer-motion'
 import { Project } from '@/lib/types'
 import Image from 'next/image'
 import { Earning, GithubIcon, Likes, PreviewIcon, Star, Timer } from '../../utils/icons'
@@ -14,10 +11,9 @@ const IconText: React.FC<{ icon: string; text: string }> = ({ icon, text }) => (
 
 interface ProjectCardProps {
   data: Project
-  idx?: number
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ data, idx = 0 }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ data }) => {
   const {
     title,
     shortDescription,
@@ -33,38 +29,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ data, idx = 0 }) => {
     cover,
   } = data
 
-  // 3D tilt and glow border effect
-  const cardRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = cardRef.current
-    if (!el) return
-    const onMouseMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect()
-      const x = (e.clientX - rect.left) / rect.width - 0.5
-      const y = (e.clientY - rect.top) / rect.height - 0.5
-      el.style.transform = `rotateY(${x * 12}deg) rotateX(${-y * 12}deg) scale(1.04)`
-      el.style.boxShadow = `0 0 32px 2px #00fff7, 0 2px 24px 0 #1a1a2e` // neon glow
-    };
-    const onMouseLeave = () => {
-      if (!el) return;
-      el.style.transform = ''
-      el.style.boxShadow = ''
-    };
-    el.addEventListener('mousemove', onMouseMove)
-    el.addEventListener('mouseleave', onMouseLeave)
-    return () => {
-      el.removeEventListener('mousemove', onMouseMove)
-      el.removeEventListener('mouseleave', onMouseLeave)
-    }
-  }, [])
   return (
-    <motion.div
-      ref={cardRef}
-      className={`glass-card bg-white/10 backdrop-blur-lg border border-white/10 flex flex-col justify-between rounded-2xl shadow-xl p-6 transition-transform duration-300 hover:scale-[1.02] ${idx % 5 === 0 ? 'md:col-span-3' : 'md:col-span-2'}`}
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: idx * 0.12, duration: 0.7, ease: 'easeOut' }}
-    >
+    <div className="glass-card bg-white/10 backdrop-blur-lg border border-white/10 flex flex-col justify-between rounded-2xl shadow-xl p-6 transition-transform duration-300 hover:scale-[1.02]">
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1">
           <div className="flex flex-col flex-wrap gap-3 sm:flex-row sm:items-center">
@@ -88,13 +54,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ data, idx = 0 }) => {
             )}
           </ul>
         </div>
-        <figure className="flex justify-end overflow-hidden group">
+        <figure className="flex justify-end overflow-hidden">
           <Image
             src={cover}
             width={150}
             height={80}
             alt="Project Cover"
-            className="h-[80px] w-[150px] rounded-md object-cover shadow-[0px_1.66px_3.74px_-1.25px_#18274B1F] group-hover:scale-110 group-hover:blur-[2px] transition-all duration-300"
+            className="h-[80px] w-[150px] rounded-md object-cover shadow-[0px_1.66px_3.74px_-1.25px_#18274B1F]"
           />
         </figure>
       </div>
@@ -124,7 +90,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ data, idx = 0 }) => {
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
