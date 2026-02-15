@@ -3,7 +3,7 @@
 
 :root {
   --primary: #00ffff;         /* Cyan */
-  --secondary: #ff00ff;       /* Magenta */
+  --secondary: #ffff00;       /* Yellow */
   --accent: #ffff00;          /* Yellow */
   --dark: #050505;            /* Background dark */
   --darker: #000000;          /* Pure black */
@@ -11,7 +11,6 @@
   --gray: #888888;            /* Text secondary */
   --muted: #666666;           /* Text muted */
   --glow-cyan: rgba(0,255,255,0.5);      /* Cyan glow */
-  --glow-magenta: rgba(255,0,255,0.5);   /* Magenta glow */
   --glow-yellow: rgba(255,255,0,0.5);    /* Yellow glow */
 }
 
@@ -138,7 +137,7 @@ a:hover {
 
 /* === Gradient Text for Headings === */
 h1, h2, .hero-title, .gradient-heading {
-  background: linear-gradient(135deg, #ffffff 0%, #00ffff 50%, #ff00ff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #00ffff 50%, #ffff00 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -196,7 +195,7 @@ h3 {
   position: absolute;
   left: 0; bottom: 0;
   width: 0; height: 2.5px;
-  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  background: linear-gradient(90deg, #00ffff, #ffff00);
   box-shadow: 0 0 10px #00ffff;
   border-radius: 2px;
   transition: width 0.35s cubic-bezier(.4,0,.2,1), background 0.3s;
@@ -214,7 +213,7 @@ h3 {
 }
 .active-nav-link::after {
   width: 100%;
-  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  background: linear-gradient(90deg, #00ffff, #ffff00);
   box-shadow: 0 0 16px #00ffff;
 }
 /* --- Custom Magnetic Cursor --- */
@@ -276,7 +275,7 @@ body { cursor: none !important; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, #1a0033 0%, #00ffff 40%, #ff00ff 70%, #0a1929 100%);
+  background: linear-gradient(120deg, #000000 0%, #00ffff 40%, #ffff00 70%, #0a1929 100%);
   background-size: 300% 300%;
   filter: blur(60px) brightness(0.7) saturate(1.2);
   opacity: 0.85;
@@ -288,7 +287,7 @@ body { cursor: none !important; }
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 20% 30%, #00ffff44 0%, transparent 60%),
-              radial-gradient(circle at 80% 70%, #ff00ff33 0%, transparent 60%),
+              radial-gradient(circle at 80% 70%, #ffff0033 0%, transparent 60%),
               radial-gradient(circle at 60% 20%, #00ffff22 0%, transparent 70%);
   filter: blur(40px);
   opacity: 0.7;
@@ -334,7 +333,7 @@ body { cursor: none !important; }
 
 /* --- Gradient Text for Headings --- */
 h1, h2, .gradient-text {
-  background: linear-gradient(135deg, #00ffff, #ff00ff);
+  background: linear-gradient(135deg, #00ffff, #ffff00);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% auto;
