@@ -18,7 +18,6 @@ const BlogCard: FC<BlogCardProps> = ({ post, large, index = 0 }) => {
       <Link
         href={`/blogs/${slug}`}
         className="flex items-start gap-4 no-underline transition-all duration-300 ease-out hover:shadow-2xl hover:scale-[1.03] hover:bg-accent/5 rounded-2xl p-4"
-      >
         {!large && (
           <h5 className="text-neutral/20 text-[56px] leading-[68px] font-extrabold drop-shadow-lg">0{index + 1}</h5>
         )}
