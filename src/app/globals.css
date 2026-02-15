@@ -1,3 +1,164 @@
+/* === Custom Color Palette === */
+:root {
+  --primary: #00ffff;
+  --secondary: #ff00ff;
+  --accent: #ffff00;
+  --dark: #050505;
+  --darker: #000000;
+  --light: #ffffff;
+  --gray: #888888;
+  --glow-cyan: rgba(0, 255, 255, 0.5);
+  --glow-magenta: rgba(255, 0, 255, 0.5);
+}
+
+/* === Animated Gradient Background === */
+.gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background: linear-gradient(45deg, #1a0033, #0a1929, #002244, #1a0033);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  pointer-events: none;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === Mesh Gradient Background (optional, can be toggled) === */
+.mesh-bg {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background:
+    radial-gradient(at 27% 37%, hsla(215, 98%, 61%, 0.2) 0px, transparent 50%),
+    radial-gradient(at 97% 21%, hsla(325, 98%, 61%, 0.2) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, hsla(180, 98%, 61%, 0.2) 0px, transparent 50%),
+    radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 0.2) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 0.2) 0px, transparent 50%),
+    radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 0.2) 0px, transparent 50%),
+    radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 0.2) 0px, transparent 50%);
+  background-color: #000000;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+/* === Floating Shapes (optional) === */
+.shape {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.1;
+  animation: float 20s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+.shape-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--primary);
+  top: 10%;
+  left: 10%;
+}
+.shape-2 {
+  width: 300px;
+  height: 300px;
+  background: var(--secondary);
+  bottom: 20%;
+  right: 15%;
+  animation-delay: -5s;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(50px, 50px); }
+}
+
+/* === Particle Canvas (see JS for implementation) === */
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* === Film Grain Overlay === */
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.3;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* === Hero Section Radial Spotlight === */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* === Interactive Element Glows === */
+button, .btn {
+  box-shadow: 0 0 20px var(--glow-cyan);
+}
+button:hover, .btn:hover {
+  box-shadow: 0 0 40px var(--glow-cyan);
+}
+a:hover {
+  color: var(--primary);
+  text-shadow: 0 0 10px var(--glow-cyan);
+}
+.card:hover, .glass-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 30px var(--glow-cyan);
+}
+
+/* === Gradient Text for Headings === */
+h1, h2, .hero-title {
+  background: linear-gradient(135deg, #ffffff 0%, var(--primary) 50%, var(--secondary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientFlow 3s linear infinite;
+}
+@keyframes gradientFlow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* === Accent Color Highlights === */
+.tag, .badge {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+.icon {
+  color: var(--primary);
+  filter: drop-shadow(0 0 10px var(--glow-cyan));
+}
 /* --- Modern Navbar Glassmorphism & Menu Effects --- */
 .navbar-glass {
   background: rgba(10, 20, 40, 0.75);
