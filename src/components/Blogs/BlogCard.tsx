@@ -1,3 +1,4 @@
+"use client"
 import { BlogPost } from '@/lib/types'
 import { formatDate } from '@/utils'
 import Image from 'next/image'

@@ -1,3 +1,13 @@
+
+import { useRef, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { Project } from '@/lib/types'
+import Image from 'next/image'
+import { Earning, GithubIcon, Likes, PreviewIcon, Star, Timer } from '../../utils/icons'
+"use client"
+"use client"
+import { useRef, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { Project } from '@/lib/types'
 import Image from 'next/image'
 import { Earning, GithubIcon, Likes, PreviewIcon, Star, Timer } from '../../utils/icons'
@@ -8,9 +18,6 @@ const IconText: React.FC<{ icon: string; text: string }> = ({ icon, text }) => (
     <span className="text-neutral text-sm">{text}</span>
   </li>
 )
-
-import { motion } from 'framer-motion'
-import { useRef, useEffect } from 'react'
 
 interface ProjectCardProps {
   data: Project
@@ -39,6 +46,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ data, idx = 0 }) => {
     const el = cardRef.current
     if (!el) return
     function onMouseMove(e: MouseEvent) {
+      if (!el) return;
       const rect = el.getBoundingClientRect()
       const x = (e.clientX - rect.left) / rect.width - 0.5
       const y = (e.clientY - rect.top) / rect.height - 0.5
@@ -46,6 +54,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ data, idx = 0 }) => {
       el.style.boxShadow = `0 0 32px 2px #00fff7, 0 2px 24px 0 #1a1a2e` // neon glow
     }
     function onMouseLeave() {
+      if (!el) return;
       el.style.transform = ''
       el.style.boxShadow = ''
     }

@@ -30,6 +30,7 @@ const ParticlesBackground = () => {
     }))
 
     function draw() {
+      if (!ctx) return;
       ctx.clearRect(0, 0, width, height)
       for (const p of particles) {
         ctx.save()

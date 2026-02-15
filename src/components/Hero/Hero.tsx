@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import useRoleSwitcher from '@/hooks/useRoleSwitcher'
 import useRotatingAnimation from '@/hooks/useRotatingAnimation'
 import Image from 'next/image'
@@ -7,6 +7,42 @@ import Ellipse from './Ellipse'
 import ParticlesBackground from './ParticlesBackground'
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+
+
+// ParallaxImage: 3D floating effect on mouse move
+const ParallaxImage = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    function onMouseMove(e: MouseEvent) {
+      if (!el) return;
+      const rect = el.getBoundingClientRect()
+      const x = (e.clientX - rect.left) / rect.width - 0.5
+      const y = (e.clientY - rect.top) / rect.height - 0.5
+      el.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 16}deg) scale(1.04)`
+    }
+    function onMouseLeave() {
+      if (!el) return;
+      el.style.transform = ''
+    }
+    el.addEventListener('mousemove', onMouseMove)
+    el.addEventListener('mouseleave', onMouseLeave)
+    return () => {
+      el.removeEventListener('mousemove', onMouseMove)
+      el.removeEventListener('mouseleave', onMouseLeave)
+    }
+  }, [])
+  return <div ref={ref} className="transition-transform duration-300 will-change-transform">{children}</div>
+}
+
+// ScrollIndicator: Animated scroll down indicator
+const ScrollIndicator = () => (
+  <div className="absolute left-1/2 bottom-8 -translate-x-1/2 z-20 flex flex-col items-center">
+    <div className="w-1.5 h-8 rounded-full bg-gradient-to-b from-accent/80 to-accent/0 animate-bounce mb-2" />
+    <span className="text-xs text-accent/80 animate-pulse">Scroll</span>
+  </div>
+)
 
 const Hero = () => {
   const ellipseRef = useRotatingAnimation()
@@ -122,6 +158,7 @@ const Hero = () => {
       <ScrollIndicator />
     </section>
   )
+}
 // MagneticButton: Button that attracts the cursor
 const MagneticButton = ({ children }: { children: React.ReactNode }) => {
   const ref = useRef<HTMLDivElement>(null)
@@ -129,12 +166,14 @@ const MagneticButton = ({ children }: { children: React.ReactNode }) => {
     const el = ref.current
     if (!el) return
     function onMouseMove(e: MouseEvent) {
+      if (!el) return;
       const rect = el.getBoundingClientRect()
       const x = e.clientX - rect.left - rect.width / 2
       const y = e.clientY - rect.top - rect.height / 2
       el.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`
     }
     function onMouseLeave() {
+      if (!el) return;
       el.style.transform = ''
     }
     el.addEventListener('mousemove', onMouseMove)
@@ -145,7 +184,7 @@ const MagneticButton = ({ children }: { children: React.ReactNode }) => {
     }
   }, [])
   return <div ref={ref} className="inline-block transition-transform duration-200">{children}</div>
-}
+
 
 // ParallaxImage: 3D floating effect on mouse move
 const ParallaxImage = ({ children }: { children: React.ReactNode }) => {
@@ -154,12 +193,14 @@ const ParallaxImage = ({ children }: { children: React.ReactNode }) => {
     const el = ref.current
     if (!el) return
     function onMouseMove(e: MouseEvent) {
+      if (!el) return;
       const rect = el.getBoundingClientRect()
       const x = (e.clientX - rect.left) / rect.width - 0.5
       const y = (e.clientY - rect.top) / rect.height - 0.5
       el.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 16}deg) scale(1.04)`
     }
     function onMouseLeave() {
+      if (!el) return;
       el.style.transform = ''
     }
     el.addEventListener('mousemove', onMouseMove)
