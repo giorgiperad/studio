@@ -1,14 +1,14 @@
 /* === Custom Color Palette === */
+
 :root {
-  --primary: #00ffff;
-  --secondary: #ff00ff;
-  --accent: #ffff00;
+  --primary: #0ff;
+  --secondary: #f0f;
+  --accent: #ff0;
   --dark: #050505;
   --darker: #000000;
-  --light: #ffffff;
-  --gray: #888888;
-  --glow-cyan: rgba(0, 255, 255, 0.5);
-  --glow-magenta: rgba(255, 0, 255, 0.5);
+  --light: #fff;
+  --gray: #888;
+  --glow: rgba(0,255,255,0.5);
 }
 
 /* === Animated Gradient Background === */
@@ -584,16 +584,296 @@ html {
 }
 
 
+
 body {
-  font-family: 'Inter', 'Fira Code', monospace, sans-serif;
+  font-family: 'DM Sans', 'Inter', 'Fira Code', monospace, sans-serif;
+  background: var(--dark);
+  color: var(--light);
+  overflow-x: hidden;
+  cursor: none;
+  min-height: 100vh;
   font-size: 1.08rem;
   font-weight: 400;
-  background: linear-gradient(135deg, #10131a 0%, #23283a 100%);
-  color: var(--pc);
-  min-height: 100vh;
   letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+/* === Modern Glassmorphism Card & Section === */
+.glass-card, .glass, section {
+  background: rgba(255,255,255,0.03) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 8px 32px rgba(0,255,255,0.10), 0 1.5px 8px 0 rgba(0,0,0,0.10) !important;
+}
+
+/* === Bento Grid === */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.bento-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+  backdrop-filter: blur(20px);
+}
+.bento-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,255,255,0.08) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.bento-item:hover::before {
+  opacity: 1;
+}
+.bento-item:hover {
+  border-color: rgba(0,255,255,0.3);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0,255,255,0.2);
+}
+.bento-large {
+  grid-column: span 8;
+  grid-row: span 2;
+}
+.bento-medium {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+.bento-small {
+  grid-column: span 4;
+}
+.bento-icon {
+  font-size: 3em;
+  margin-bottom: 20px;
+  display: inline-block;
+  filter: drop-shadow(0 0 20px var(--glow));
+}
+.bento-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+.bento-desc {
+  color: var(--gray);
+  line-height: 1.8;
+  font-size: 1.05em;
+}
+.bento-stats {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5em;
+  font-weight: 900;
+  color: var(--primary);
+  display: block;
+}
+.stat-label {
+  font-size: 0.9em;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* === Hero Section Modern === */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 60px;
+}
+.hero-content {
+  max-width: 1200px;
+  position: relative;
+  z-index: 2;
+}
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.2s;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3em, 10vw, 8em);
+  font-weight: 900;
+  line-height: 0.95;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #fff 0%, var(--primary) 50%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.4s;
+}
+.hero-subtitle {
+  font-size: clamp(1.2em, 3vw, 1.8em);
+  color: var(--gray);
+  margin-bottom: 50px;
+  max-width: 700px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.6s;
+}
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.8s;
+}
+.btn {
+  padding: 18px 45px;
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-primary {
+  background: var(--primary);
+  color: var(--darker);
+  box-shadow: 0 0 40px var(--glow);
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s ease;
+}
+.btn-primary:hover::before {
+  left: 100%;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 60px var(--glow), 0 10px 30px rgba(0,255,255,0.3);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--light);
+  border: 2px solid var(--light);
+}
+.btn-secondary:hover {
+  background: var(--light);
+  color: var(--darker);
+  transform: translateY(-3px);
+}
+
+/* === Project Card Modern === */
+.project-card {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.project-card:hover .project-image {
+  transform: scale(1.1);
+}
+.project-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.project-card:hover .project-overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+.project-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+.project-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tag {
+  padding: 6px 15px;
+  background: rgba(0,255,255,0.1);
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  font-size: 0.8em;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* === Footer Modern === */
+footer {
+  padding: 80px 60px 40px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-text {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--gray);
+  font-size: 0.9em;
+}
+.social-links {
+  display: flex;
+  gap: 30px;
+}
+.social-links a {
+  color: var(--light);
+  font-size: 1.5em;
+  transition: all 0.3s ease;
+}
+.social-links a:hover {
+  color: var(--primary);
+  text-shadow: 0 0 20px var(--glow);
 }
 
 section, .glass {
