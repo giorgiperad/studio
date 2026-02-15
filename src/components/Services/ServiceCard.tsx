@@ -1,7 +1,3 @@
-
-import { useState } from 'react'
-import AnimatedServiceIcon from './AnimatedServiceIcon'
-"use client"
 "use client"
 import { useState } from 'react'
 import AnimatedServiceIcon from './AnimatedServiceIcon'
