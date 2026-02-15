@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useRef } from 'react'
 
 export default function ParticleBg() {
@@ -10,11 +11,12 @@ export default function ParticleBg() {
     let dpr = window.devicePixelRatio || 1
     let width = window.innerWidth
     let height = window.innerHeight
-    let particles = []
+    let particles: Particle[] = []
     const PARTICLE_COUNT = window.innerWidth < 768 ? 40 : 90
     function resize() {
       width = window.innerWidth
       height = window.innerHeight
+      if (!canvas) return
       canvas.width = width * dpr
       canvas.height = height * dpr
       canvas.style.width = width + 'px'
@@ -47,6 +49,7 @@ export default function ParticleBg() {
     }
     particles = Array.from({ length: PARTICLE_COUNT }, () => new Particle())
     function animate() {
+      if (!ctx) return
       ctx.clearRect(0, 0, width * dpr, height * dpr)
       // Draw lines
       for (let i = 0; i < particles.length; i++) {

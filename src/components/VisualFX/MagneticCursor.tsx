@@ -1,3 +1,4 @@
+"use client"
 // Custom Magnetic Cursor
 import { useEffect } from 'react'
 
@@ -13,7 +14,7 @@ export default function MagneticCursor() {
     document.body.style.cursor = 'none'
 
     let mouseX = 0, mouseY = 0, outerX = 0, outerY = 0
-    const lerp = (a, b, n) => (1 - n) * a + n * b
+    const lerp = (a: number, b: number, n: number) => (1 - n) * a + n * b
     function animate() {
       outerX = lerp(outerX, mouseX, 0.15)
       outerY = lerp(outerY, mouseY, 0.15)
@@ -22,7 +23,7 @@ export default function MagneticCursor() {
       requestAnimationFrame(animate)
     }
     animate()
-    function onMove(e) {
+    function onMove(e: MouseEvent) {
       mouseX = e.clientX
       mouseY = e.clientY
     }
