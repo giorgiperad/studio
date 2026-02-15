@@ -30,14 +30,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ data }) => {
   } = data
 
   return (
-    <div className="bg-secondary border-border flex flex-col justify-between rounded-[14px] border p-5">
+    <div className="glass-card bg-white/10 backdrop-blur-lg border border-white/10 flex flex-col justify-between rounded-2xl shadow-xl p-6 transition-transform duration-300 hover:scale-[1.02]">
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1">
           <div className="flex flex-col flex-wrap gap-3 sm:flex-row sm:items-center">
-            <h3 className="text-secondary-content text-lg font-medium md:font-semibold">{title}</h3>
+            <h3 className="text-accent text-xl font-extrabold md:text-2xl drop-shadow">{title}</h3>
             {type && (
               <span
-                className={`h-7 w-fit rounded-md bg-[#FFFFFF1A] p-1 text-sm ${type === 'New 🔥' ? 'animate-blink text-tag' : 'text-accent'} backdrop-blur-[80px]`}>
+                className={`h-7 w-fit rounded-md bg-accent/20 p-1 text-sm ${type === 'New 🔥' ? 'animate-blink text-tag' : 'text-accent'} backdrop-blur-[80px] font-bold`}
+              >
                 {type}
               </span>
             )}
@@ -65,14 +66,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ data }) => {
       </div>
 
       <div>
-        <div className="bg-primary text-primary-content my-4 h-[100px] overflow-scroll rounded-2xl px-4 py-2">
-          <p className="text-[14px] font-normal md:text-base">{shortDescription}</p>
+        <div className="bg-primary/80 text-primary-content my-4 h-[100px] overflow-y-auto rounded-2xl px-4 py-2 shadow-inner">
+          <p className="text-base font-medium md:text-lg opacity-90">{shortDescription}</p>
         </div>
-        <div className="flex gap-5">
+        <div className="flex gap-5 mt-2">
           {livePreview && (
             <a
               href={livePreview}
-              className="text-accent flex gap-2 text-sm underline underline-offset-[3px] transition-all duration-75 ease-linear hover:scale-105 md:text-base"
+              className="text-accent flex gap-2 text-base underline underline-offset-[3px] transition-all duration-150 ease-linear hover:scale-110 font-semibold"
               target="_blank">
               <PreviewIcon className="h-auto w-[18px] md:w-5" />
               <span>Live Preview</span>
@@ -81,7 +82,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ data }) => {
           {githubLink && (
             <a
               href={githubLink}
-              className="text-accent flex gap-2 text-sm underline underline-offset-[3px] transition-all duration-75 ease-linear hover:scale-105 md:text-base"
+              className="text-accent flex gap-2 text-base underline underline-offset-[3px] transition-all duration-150 ease-linear hover:scale-110 font-semibold"
               target="_blank">
               <GithubIcon className="w-[18px] md:w-5" />
               <span>Github Link</span>

@@ -24,11 +24,11 @@ const geDescriptions: Record<string, string> = {
 }
 const ServiceCard: React.FC<ServiceCardTypes> = ({ title, shortDescription, icon }) => {
   return (
-    <div className="bg-secondary border-border flex flex-col items-center rounded-[14px] border p-5">
+    <div className="glass-card bg-white/10 backdrop-blur-lg border border-white/10 flex flex-col items-center rounded-2xl shadow-lg p-6 transition-transform duration-300 hover:scale-[1.03]">
       <Image src={icon} alt={geTitles[title] || title} className="my-1 size-14" />
-      <h5 className="text-accent mt-2 mb-5 text-center text-base font-semibold">{geTitles[title] || title}</h5>
-      <div className="bg-primary rounded-2xl p-4">
-        <p className="text-primary-content text-center text-sm font-normal">{geDescriptions[shortDescription] || shortDescription}</p>
+      <h5 className="text-accent mt-2 mb-5 text-center text-lg font-extrabold drop-shadow">{geTitles[title] || title}</h5>
+      <div className="bg-primary/80 rounded-2xl p-4 shadow-inner">
+        <p className="text-primary-content text-center text-base font-medium opacity-90">{geDescriptions[shortDescription] || shortDescription}</p>
       </div>
     </div>
   )

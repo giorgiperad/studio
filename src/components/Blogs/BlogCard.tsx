@@ -14,12 +14,12 @@ const BlogCard: FC<BlogCardProps> = ({ post, large, index = 0 }) => {
   const { slug, title, cover, shortDescription, tags, publishedDate, readingTime } = post
 
   return (
-    <div>
+    <div className="glass-card bg-white/10 backdrop-blur-lg rounded-2xl shadow-lg border border-white/10 transition-transform duration-300 hover:scale-[1.02]">
       <Link
         href={`/blogs/${slug}`}
-        className="hover:ring-border hover:ring-offset-primary flex items-start gap-4 no-underline transition-all duration-300 ease-out hover:rounded-md hover:ring hover:ring-offset-8">
+        className="flex items-start gap-4 no-underline transition-all duration-300 ease-out hover:shadow-2xl hover:scale-[1.03] hover:bg-accent/5 rounded-2xl p-4"
         {!large && (
-          <h5 className="text-neutral/20 text-[56px] leading-[68px] font-bold">0{index + 1}</h5>
+          <h5 className="text-neutral/20 text-[56px] leading-[68px] font-extrabold drop-shadow-lg">0{index + 1}</h5>
         )}
 
         <div className="w-full">
@@ -41,10 +41,11 @@ const BlogCard: FC<BlogCardProps> = ({ post, large, index = 0 }) => {
           )}
 
           <h3
-            className={`${large ? 'text-[30px] font-bold md:text-[40px]' : 'text-[20px] font-medium'} text-accent mt-2 mb-1.5 line-clamp-3 leading-[1.3]`}>
+            className={`${large ? 'text-[32px] font-extrabold md:text-[44px]' : 'text-[22px] font-bold'} text-accent mt-2 mb-1.5 line-clamp-3 leading-[1.3] drop-shadow`}
+          >
             {title}
           </h3>
-          <p className="text-primary-content mb-1.5 line-clamp-3 overflow-hidden text-sm leading-[1.4] text-ellipsis">
+          <p className="text-primary-content mb-1.5 line-clamp-3 overflow-hidden text-base leading-[1.5] text-ellipsis opacity-90">
             {shortDescription}
           </p>
 
