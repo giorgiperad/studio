@@ -1,43 +1,40 @@
-import { Project } from '@/lib/types'
-import useBentoMouseSpotlight from '../VisualFX/useBentoMouseSpotlight'
-import Image from 'next/image'
-import { Earning, GithubIcon, Likes, PreviewIcon, Star, Timer } from '../../utils/icons'
-import { cn } from '@/utils/index'
+import React from "react";
 
-const IconText: React.FC<{ icon: string; text: string }> = ({ icon, text }) => (
-  <li className="flex gap-2">
-    <Image src={icon} alt={text} className="size-[18px] md:size-5" />
-    <span className="text-neutral text-sm">{text}</span>
-  </li>
-)
-
-interface ProjectCardProps {
-  data: Project
+export interface ProjectCardProps {
+  title: string;
+  description: string;
+  image: string;
+  link?: string;
+  tags?: string[];
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ data }) => {
-  const {
-    title,
-    shortDescription,
-    visitors,
-    earned,
-    ratings,
-    githubStars,
-    numberOfSales,
-    livePreview,
-    githubLink,
-    siteAge,
-    type,
-    cover,
-  } = data
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, link, tags }) => (
+  <div className="project-card">
+    <div className="project-image-wrapper">
+      <img src={image} alt={title} className="project-image" />
+      <div className="project-overlay">
+        {link && (
+          <a href={link} target="_blank" rel="noopener noreferrer" className="project-link">
+            ნახე პროექტი
+          </a>
+        )}
+      </div>
+    </div>
+    <div className="project-info">
+      <h3 className="project-title">{title}</h3>
+      <p className="project-desc">{description}</p>
+      {tags && (
+        <div className="project-tags">
+          {tags.map((tag, idx) => (
+            <span key={idx} className="project-tag">{tag}</span>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+);
 
-  const handleMouseMove = useBentoMouseSpotlight();
-    return (
-      <div
-        className="glass-card bento-item project-card group relative flex flex-col justify-between transition-all duration-300 cursor-pointer"
-        onMouseMove={handleMouseMove}
-      >
-      <div className="flex items-start justify-between gap-2">
+export default ProjectCard;
         <div className="flex-1">
           <div className="flex flex-col flex-wrap gap-3 sm:flex-row sm:items-center">
             <h3 className="text-accent text-xl font-extrabold md:text-2xl drop-shadow">{title}</h3>

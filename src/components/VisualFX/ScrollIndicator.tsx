@@ -1,43 +1,29 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
-const ScrollIndicator = () => {
-  const [visible, setVisible] = useState(true);
-  const arrowRef = useRef<HTMLDivElement>(null);
+const ScrollIndicator: React.FC = () => {
+  const indicatorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => {
-      setVisible(window.scrollY < 100);
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      if (indicatorRef.current) {
+        indicatorRef.current.style.width = percent + "%";
+      }
     };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div
-      ref={arrowRef}
-      className={`scroll-indicator ${visible ? "visible" : "fadeOut"}`}
-      style={{
-        position: "absolute",
-        left: "50%",
-        bottom: 32,
-        transform: "translateX(-50%)",
-        zIndex: 10,
-        pointerEvents: "none",
-      }}
-    >
-      <svg width="32" height="48" viewBox="0 0 32 48" fill="none">
-        <g>
-          <path
-            d="M16 8V40"
-            stroke="#0ff"
-            strokeWidth="4"
-            strokeLinecap="round"
-            className="scroll-indicator-arrow"
-          />
-          <circle
-            cx="16"
-            cy="40"
+    <div style={{position:'fixed',top:0,left:0,width:'100%',height:'4px',zIndex:2000}}>
+      <div ref={indicatorRef} style={{height:'100%',background:'linear-gradient(90deg, var(--primary), var(--secondary))',width:'0%',transition:'width 0.2s'}} />
+    </div>
+  );
+};
+
+export default ScrollIndicator;
             r="4"
             fill="#0ff"
             className="scroll-indicator-dot"

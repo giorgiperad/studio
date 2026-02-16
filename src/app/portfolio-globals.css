@@ -1,3 +1,49 @@
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .section {
+    padding: 80px 32px;
+  }
+  .hero {
+    padding: 0 32px;
+  }
+  nav {
+    padding: 24px 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+  }
+  .section-title {
+    margin-bottom: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 48px 8px;
+  }
+  .hero {
+    padding: 0 8px;
+  }
+  nav {
+    padding: 16px 8px;
+  }
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .bento-item {
+    padding: 20px;
+    border-radius: 14px;
+  }
+  .section-title {
+    font-size: 2em;
+    margin-bottom: 32px;
+  }
+}
 /*
   Global CSS for portfolio theme (based on professional-portfolio.html)
   - Colors, fonts, effects, bento grid, hero, nav, buttons, cards, etc.
@@ -68,7 +114,10 @@ body {
   z-index: 1;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  /* Intersection Observer Fade-in */
+  .fade-init {
   opacity: 0.3;
 }
 
 /* ...more styles will be added as components are scaffolded... */
+  .fade-in {
