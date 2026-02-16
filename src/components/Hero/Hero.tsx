@@ -1,6 +1,7 @@
 
 import React from "react";
 
+
 const Hero: React.FC = () => (
   <section className="hero">
     <div className="hero-content">

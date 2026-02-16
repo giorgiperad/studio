@@ -52,6 +52,7 @@
   Global CSS for portfolio theme (based on professional-portfolio.html)
   - Colors, fonts, effects, bento grid, hero, nav, buttons, cards, etc.
 */
+
 :root {
   --primary: #0ff;
   --secondary: #f0f;
