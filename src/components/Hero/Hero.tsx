@@ -61,7 +61,6 @@ const Hero = () => {
         <ScrollIndicator />
       </div>
     </section>
-  import ScrollIndicator from '../VisualFX/ScrollIndicator'
   )
 }
 
