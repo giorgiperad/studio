@@ -2,16 +2,14 @@ import { BlogPost } from '@/lib/types'
 import SectionHeading from '../SectionHeading/SectionHeading'
 import Divider from '../UI/Divider'
 import BlogCard from './BlogCard'
-import { useSectionInView } from '@/hooks/useSectionInView'
 
 interface BlogSectionProps {
   posts: BlogPost[]
 }
 
 const BlogSection = ({ posts }: BlogSectionProps) => {
-  const sectionRef = useSectionInView();
   return (
-    <section id="blogs" className="my-14" ref={sectionRef}>
+    <section id="blogs" className="my-14">
       <SectionHeading
         title="// ჩემი ბლოგები"
         subtitle="წაიკითხეთ ჩემი უახლესი ბლოგ პოსტები ვებ დეველოპმენტზე, JavaScript-ზე, React-ზე და სხვა თემებზე."

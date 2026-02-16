@@ -3,7 +3,6 @@ import { formatDate } from '@/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
-import useBentoMouseSpotlight from '../VisualFX/useBentoMouseSpotlight'
 
 interface BlogCardProps {
   index?: number
@@ -14,9 +13,8 @@ interface BlogCardProps {
 const BlogCard: FC<BlogCardProps> = ({ post, large, index = 0 }) => {
   const { slug, title, cover, shortDescription, tags, publishedDate, readingTime } = post
 
-  const handleMouseMove = useBentoMouseSpotlight();
   return (
-    <div className="glass-card bento-item blog-card bg-white/10 backdrop-blur-lg rounded-2xl shadow-lg border border-white/10 transition-transform duration-300 hover:scale-[1.02]">
+    <div className="glass-card bg-white/10 backdrop-blur-lg rounded-2xl shadow-lg border border-white/10 transition-transform duration-300 hover:scale-[1.02]">
       <Link
         href={`/blogs/${slug}`}
         className="flex items-start gap-4 no-underline transition-all duration-300 ease-out hover:shadow-2xl hover:scale-[1.03] hover:bg-accent/5 rounded-2xl p-4"

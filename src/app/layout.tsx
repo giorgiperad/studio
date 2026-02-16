@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import './portfolio-globals.css'
 
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
@@ -44,28 +43,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  if (typeof window !== 'undefined') {
-    // Dynamically import and run smoothscroll-polyfill only on the client
-    import('smoothscroll-polyfill').then((smoothscroll) => {
-      smoothscroll.polyfill();
-    });
-  }
   return (
     <html lang="en" data-theme="dark">
       <body className={`${firaCode.className}`}>
-        {/* Visual FX Components */}
-        <div id="__visualfx-cursor-root" />
-        <div id="__visualfx-bg-root" />
-        <div id="__visualfx-grain-root" />
-        {/* Mount the provider to inject effects */}
-        {typeof window !== 'undefined' && (
-          <>{require('@/components/VisualFX/VisualFXProvider').default()}</>
-        )}
-        <ThemeMenu />
         <header>
           <Navbar />
         </header>
         {children}
+        <ThemeMenu />
         <Footer />
       </body>
     </html>
