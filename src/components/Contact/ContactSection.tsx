@@ -1,10 +1,13 @@
 import { MsgIcon, PhoneIcon } from '@/utils/icons'
 import ContactForm from './ContactForm'
+import { useSectionInView } from '@/hooks/useSectionInView'
 
 const ContactSection = () => {
+  const sectionRef = useSectionInView();
   return (
     <section
       id="contact"
+      ref={sectionRef}
       className="bg-secondary my-8 grid grid-cols-1 gap-16 rounded-4xl p-8 md:my-16 md:grid-cols-2 md:gap-8 lg:gap-12">
       <div className="flex flex-col justify-between gap-8">
         <div>

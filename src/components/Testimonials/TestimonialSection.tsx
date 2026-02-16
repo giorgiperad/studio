@@ -4,6 +4,7 @@ import { Testimonial } from '@/lib/types'
 import { useState } from 'react'
 import SectionHeading from '../SectionHeading/SectionHeading'
 import TestimonialCard from './TestimonialCard'
+import { useSectionInView } from '@/hooks/useSectionInView'
 
 interface TestimonialSectionProps {
   testimonials: Testimonial[]
@@ -11,9 +12,10 @@ interface TestimonialSectionProps {
 
 const TestimonialSection: React.FC<TestimonialSectionProps> = ({ testimonials }) => {
   const [activeCard, setActiveCard] = useState(0)
+  const sectionRef = useSectionInView();
 
   return (
-    <section id="testimonials">
+    <section id="testimonials" ref={sectionRef}>
       <SectionHeading
         title="// შეფასებები"
         subtitle="ნუ ენდობით მხოლოდ ჩვენს სიტყვებს - იხილეთ რას ამბობენ ჩვენი მომხმარებლები თავიანთ გამოცდილებაზე."

@@ -5,6 +5,7 @@ import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
 import ThemeMenu from '@/components/Theme/ThemeMenu'
 import { Fira_Code } from 'next/font/google'
+import { useEffect } from 'react'
 
 const firaCode = Fira_Code({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] })
 
@@ -43,6 +44,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !('scrollBehavior' in document.documentElement.style)) {
+      import('smoothscroll-polyfill').then((smoothscroll) => {
+        smoothscroll.polyfill();
+      });
+    }
+  }, []);
   return (
     <html lang="en" data-theme="dark">
       <body className={`${firaCode.className}`}>
