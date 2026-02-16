@@ -1,10 +1,8 @@
 import { footerLinks, languages } from '@/appData'
 import { socials } from '@/appData/personal'
 import Logo from '../Navbar/Logo'
-import useBentoMouseSpotlight from '../VisualFX/useBentoMouseSpotlight'
 
 const Footer = () => {
-  const handleMouseMove = useBentoMouseSpotlight();
   return (
     <footer className="bg-secondary/80 backdrop-blur-2xl relative flex min-h-[560px] flex-col justify-between gap-20 overflow-hidden px-4 py-14 md:p-14 rounded-t-3xl shadow-2xl border-t border-white/10">
       <div className="relative z-20 grid grid-cols-1 items-start gap-20 md:grid-cols-2 md:gap-12">

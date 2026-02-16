@@ -1,12 +1,10 @@
 import { serviceData } from '../../appData'
 import SectionHeading from '../SectionHeading/SectionHeading'
 import ServiceCard from './ServiceCard'
-import { useSectionInView } from '@/hooks/useSectionInView'
 
 const ServiceSection = () => {
-  const sectionRef = useSectionInView();
   return (
-    <section id="services" className="my-14" ref={sectionRef}>
+    <section id="services" className="my-14">
       <SectionHeading
         title="// სერვისები / შეთავაზებები:"
         subtitle="გთავაზობთ სერვისების ფართო სპექტრს, რათა მიიღოთ საუკეთესო კოდი და დარჩეთ კონკურენტუნარიანი."
