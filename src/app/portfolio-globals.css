@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
 /* Responsive Breakpoints */
 @media (max-width: 1200px) {
   .section {
@@ -44,7 +46,7 @@
     margin-bottom: 32px;
   }
 }
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
 
 /*
   Global CSS for portfolio theme (based on professional-portfolio.html)
