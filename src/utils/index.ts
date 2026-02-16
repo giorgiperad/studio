@@ -1,3 +1,10 @@
+// Utility to join class names conditionally
+export function cn(...args: any[]): string {
+  return args
+    .flat(Infinity)
+    .filter(Boolean)
+    .join(' ');
+}
 import { Heading } from '@/lib/types'
 
 export function formatDate(dateString: string): string {
