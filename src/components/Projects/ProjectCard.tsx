@@ -35,9 +35,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, li
 );
 
 export default ProjectCard;
-        <div className="flex-1">
-          <div className="flex flex-col flex-wrap gap-3 sm:flex-row sm:items-center">
-            <h3 className="text-accent text-xl font-extrabold md:text-2xl drop-shadow">{title}</h3>
             {type && (
               <span
                 className={`h-7 w-fit rounded-md bg-accent/20 p-1 text-sm ${type === 'New 🔥' ? 'animate-blink text-tag' : 'text-accent'} backdrop-blur-[80px] font-bold`}
