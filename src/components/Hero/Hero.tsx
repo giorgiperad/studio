@@ -39,19 +39,19 @@ const Hero = () => {
         </div>
 
         <div className="flex min-h-[18.75rem] items-center justify-center lg:min-h-[35rem]">
-          <div className="relative size-56 sm:size-60 md:size-[20rem] lg:size-[25.75rem] flex items-center justify-center">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent/30 via-primary/20 to-white/10 blur-2xl opacity-80 z-0" />
+          <div className="relative w-[260px] h-[260px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] flex items-center justify-center">
+            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-accent/30 via-primary/20 to-white/10 blur-2xl opacity-80 z-0" />
             <Image
               src={HeroImage}
               fill={true}
               priority={true}
-              sizes="(min-width: 1024px) 25.75rem, (min-width: 768px) 20rem, (min-width: 640px) 15rem, 14rem"
+              sizes="(min-width: 1024px) 400px, (min-width: 768px) 350px, (min-width: 640px) 300px, 260px"
               alt="John Doe - Full Stack Developer"
-              className="object-contain p-7 relative z-10 drop-shadow-2xl"
+              className="object-cover rounded-[2.5rem] p-0 relative z-10 drop-shadow-2xl"
             />
             <Ellipse
               ref={ellipseRef}
-              className="absolute top-0 left-0 size-56 transition-transform duration-500 ease-out sm:size-60 md:size-[20rem] lg:size-[25.75rem] text-accent/60 z-20"
+              className="absolute top-0 left-0 w-full h-full rounded-[2.5rem] transition-transform duration-500 ease-out text-accent/60 z-20"
             />
           </div>
         </div>
