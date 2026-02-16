@@ -11,7 +11,7 @@ const VisualFXProvider = () => {
     if (cursorRoot && cursorRoot.childNodes.length === 0) {
       const cursor = document.createElement("div");
       cursorRoot.appendChild(cursor);
-      import("react-dom").then(({ createRoot }) => {
+      import("react-dom/client").then(({ createRoot }) => {
         createRoot(cursor).render(<CustomCursor />);
       });
     }
@@ -20,7 +20,7 @@ const VisualFXProvider = () => {
     if (bgRoot && bgRoot.childNodes.length === 0) {
       const bg = document.createElement("div");
       bgRoot.appendChild(bg);
-      import("react-dom").then(({ createRoot }) => {
+      import("react-dom/client").then(({ createRoot }) => {
         createRoot(bg).render(<ParticlesBackground />);
       });
     }
@@ -29,7 +29,7 @@ const VisualFXProvider = () => {
     if (grainRoot && grainRoot.childNodes.length === 0) {
       const grain = document.createElement("div");
       grainRoot.appendChild(grain);
-      import("react-dom").then(({ createRoot }) => {
+      import("react-dom/client").then(({ createRoot }) => {
         createRoot(grain).render(<GrainOverlay />);
       });
     }
