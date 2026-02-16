@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-const PARTICLE_COUNT = 80;
-const PARTICLE_COLOR = "rgba(0,255,255,0.5)";
-const LINE_COLOR = "rgba(0,255,255,0.2)";
-const MAX_DISTANCE = 150;
+
+// Portfolio theme: more color variety, glow, fewer particles for performance
+const PARTICLE_COUNT = 48;
+const COLORS = ["#0ff", "#f0f", "#ff0", "#fff", "#00f0ff88"];
+const MAX_DISTANCE = 120;
 
 function random(min: number, max: number) {
   return Math.random() * (max - min) + min;
@@ -30,8 +31,11 @@ const ParticlesBackground = () => {
     particles.current = Array.from({ length: PARTICLE_COUNT }, () => ({
       x: random(0, width),
       y: random(0, height),
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      r: random(1.5, 4),
+      color: COLORS[Math.floor(random(0, COLORS.length))],
+      alpha: random(0.3, 0.8),
     }));
 
     function draw() {
@@ -45,8 +49,8 @@ const ParticlesBackground = () => {
           const dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < MAX_DISTANCE) {
-            ctx!.strokeStyle = LINE_COLOR;
-            ctx!.globalAlpha = 1 - dist / MAX_DISTANCE;
+            ctx!.strokeStyle = a.color;
+            ctx!.globalAlpha = 0.12 * (1 - dist / MAX_DISTANCE);
             ctx!.beginPath();
             ctx!.moveTo(a.x, a.y);
             ctx!.lineTo(b.x, b.y);
@@ -58,10 +62,15 @@ const ParticlesBackground = () => {
       // Draw particles
       for (let i = 0; i < PARTICLE_COUNT; i++) {
         const p = particles.current[i];
+        ctx!.globalAlpha = p.alpha;
         ctx!.beginPath();
-        ctx!.arc(p.x, p.y, 2, 0, Math.PI * 2);
-        ctx!.fillStyle = PARTICLE_COLOR;
+        ctx!.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx!.fillStyle = p.color;
+        ctx!.shadowColor = p.color;
+        ctx!.shadowBlur = 12;
         ctx!.fill();
+        ctx!.shadowBlur = 0;
+        ctx!.globalAlpha = 1;
       }
     }
 
@@ -75,7 +84,9 @@ const ParticlesBackground = () => {
       }
     }
 
+    let running = true;
     function loop() {
+      if (!running) return;
       update();
       draw();
       requestAnimationFrame(loop);
@@ -92,7 +103,10 @@ const ParticlesBackground = () => {
       ctx?.scale(dpr, dpr);
     };
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      running = false;
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
@@ -106,7 +120,9 @@ const ParticlesBackground = () => {
         height: "100vh",
         zIndex: 0,
         pointerEvents: "none",
+        opacity: 0.7,
       }}
+      aria-hidden="true"
     />
   );
 };
