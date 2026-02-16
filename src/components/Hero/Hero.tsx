@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { HeroImage } from '../../utils/images'
 import Ellipse from './Ellipse'
 import useBentoMouseSpotlight from '../VisualFX/useBentoMouseSpotlight'
+import ScrollIndicator from '../VisualFX/ScrollIndicator'
 
 const Hero = () => {
   const ellipseRef = useRotatingAnimation()
