@@ -1,6 +1,6 @@
 
 import { getAllBlogs, getAllProjects, getAllTestimonials } from '@/services'
-import HomeClient from './HomeClient'
+import HomeClientClient from './HomeClientClient'
 
 export default async function Home() {
   const projects = await getAllProjects()
@@ -8,5 +8,5 @@ export default async function Home() {
   const posts = await getAllBlogs()
   const latestPosts = posts.slice(0, 4)
 
-  return <HomeClient projects={projects} testimonials={testimonials} latestPosts={latestPosts} />
+  return <HomeClientClient projects={projects} testimonials={testimonials} latestPosts={latestPosts} />
 }
