@@ -4,35 +4,37 @@ import useRotatingAnimation from '@/hooks/useRotatingAnimation'
 import Image from 'next/image'
 import { HeroImage } from '../../utils/images'
 import Ellipse from './Ellipse'
+import useBentoMouseSpotlight from '../VisualFX/useBentoMouseSpotlight'
 
 const Hero = () => {
   const ellipseRef = useRotatingAnimation()
   const role = useRoleSwitcher({ roles: ['FULLSTACK DEVELOPER', 'INDIE HACKER', 'SOLOPRENEUR'] })
 
+  const handleMouseMove = useBentoMouseSpotlight();
   return (
     <section className="relative min-h-[calc(100dvh-4rem)] bg-gradient-to-br from-primary/80 via-primary/60 to-accent/30 bg-no-repeat overflow-hidden">
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-4 px-4 pt-16 pb-14 md:grid-cols-2 lg:p-8">
-        <div className="flex min-h-48 flex-col justify-between lg:min-h-56 lg:max-w-[33.75rem] glass-card shadow-xl rounded-3xl p-8 backdrop-blur-md bg-white/10 border border-white/10">
-          <h1>
-            <span className="text-neutral mb-2 block text-4xl font-extrabold drop-shadow-lg tracking-tight">გამარჯობა - მე ვარ ჯონ დოუ</span>
-            <span className="text-accent block text-[2rem] font-black animate-gradient-x bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">{role}</span>
+        <div className="flex min-h-48 flex-col justify-between lg:min-h-56 lg:max-w-[33.75rem] glass-card bento-item shadow-xl rounded-3xl p-8 backdrop-blur-md bg-white/10 border border-white/10" onMouseMove={handleMouseMove}>
+          <h1 className="fadeInUp stagger-1">
+            <span className="hero-gradient-text mb-2 block text-4xl font-extrabold drop-shadow-lg tracking-tight display-font">გამარჯობა - მე ვარ ჯონ დოუ</span>
+            <span className="hero-gradient-text block text-[2rem] font-black display-font">{role}</span>
           </h1>
 
-          <h2 className="text-neutral mt-4 text-xl font-medium opacity-90 drop-shadow-sm">
+          <h2 className="fadeInUp stagger-2 text-neutral mt-4 text-xl font-medium opacity-90 drop-shadow-sm">
             ინოვაციური გადაწყვეტილებების შექმნა რეალური პრობლემების გადასაჭრელად
           </h2>
 
-          <div className="mt-8 flex flex-wrap gap-6">
+          <div className="mt-8 flex flex-wrap gap-6 fadeInUp stagger-3">
             <a
               href="#"
               aria-label="დამიკავშირდით"
-              className="bg-accent/90 hover:bg-accent/100 min-w-32 cursor-pointer rounded-xl px-6 py-3 text-center text-base font-semibold text-[#00071E] shadow-lg transition-all duration-300 focus:ring-2 focus:ring-accent/60">
+              className="btn-primary min-w-32 cursor-pointer text-center text-base focus:ring-2 focus:ring-accent/60">
               დამიქირავე
             </a>
             <a
               href="#"
               aria-label="LinkedIn პროფილის ნახვა"
-              className="text-neutral bg-secondary/80 hover:bg-secondary/100 cursor-pointer rounded-xl px-6 py-3 text-base font-semibold shadow-md transition-all duration-300 focus:ring-2 focus:ring-accent/40">
+              className="btn-primary bg-secondary text-neutral hover:bg-secondary/100 cursor-pointer text-base focus:ring-2 focus:ring-accent/40">
               LinkedIn პროფილი
             </a>
           </div>
@@ -55,8 +57,10 @@ const Hero = () => {
             />
           </div>
         </div>
+        <ScrollIndicator />
       </div>
     </section>
+  import ScrollIndicator from '../VisualFX/ScrollIndicator'
   )
 }
 

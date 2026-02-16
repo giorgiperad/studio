@@ -46,11 +46,19 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="dark">
       <body className={`${firaCode.className}`}>
+        {/* Visual FX Components */}
+        <div id="__visualfx-cursor-root" />
+        <div id="__visualfx-bg-root" />
+        <div id="__visualfx-grain-root" />
+        {/* Mount the provider to inject effects */}
+        {typeof window !== 'undefined' && (
+          <>{require('@/components/VisualFX/VisualFXProvider').default()}</>
+        )}
+        <ThemeMenu />
         <header>
           <Navbar />
         </header>
         {children}
-        <ThemeMenu />
         <Footer />
       </body>
     </html>

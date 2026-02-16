@@ -35,7 +35,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="bg-primary/80 backdrop-blur-md border-border h-16 overflow-hidden border-b shadow-md">
+    <nav className="navbar-blur h-16 overflow-hidden">
       <div className="mx-auto flex h-full w-dvw max-w-[1200px] items-center justify-between px-4 py-1">
         {isVisible ? (
           <div className="text-primary-content md:hidden font-mono tracking-widest text-lg">_menu</div>
@@ -67,7 +67,7 @@ const Navbar = () => {
               className="border-border flex items-center border-b px-4 text-2xl md:border-y-0 md:border-e md:text-base md:first:border-s md:last:ml-auto md:last:border-none md:last:px-0 lg:px-8">
               <Link
                 href={href}
-                className={`text-primary-content hover:text-accent w-full py-7 transition-all duration-200 md:py-0 font-semibold tracking-wide ${pathname === href ? 'text-accent cursor-text' : ''}`}>
+                className={`nav-link w-full py-7 transition-all duration-200 md:py-0 font-semibold tracking-wide ${pathname === href ? 'text-accent cursor-text' : ''}`}>
                 {label}
               </Link>
             </li>

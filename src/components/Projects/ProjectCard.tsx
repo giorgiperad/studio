@@ -1,4 +1,5 @@
 import { Project } from '@/lib/types'
+import useBentoMouseSpotlight from '../VisualFX/useBentoMouseSpotlight'
 import Image from 'next/image'
 import { Earning, GithubIcon, Likes, PreviewIcon, Star, Timer } from '../../utils/icons'
 
@@ -29,8 +30,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ data }) => {
     cover,
   } = data
 
+  const handleMouseMove = useBentoMouseSpotlight();
   return (
-    <div className="glass-card bg-white/10 backdrop-blur-lg border border-white/10 flex flex-col justify-between rounded-2xl shadow-xl p-6 transition-transform duration-300 hover:scale-[1.02]">
+    <div className="glass-card bento-item bg-white/10 backdrop-blur-lg border border-white/10 flex flex-col justify-between rounded-2xl shadow-xl p-6 transition-transform duration-300 hover:scale-[1.02]" onMouseMove={handleMouseMove}>
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1">
           <div className="flex flex-col flex-wrap gap-3 sm:flex-row sm:items-center">
