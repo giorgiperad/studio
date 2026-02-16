@@ -1,3 +1,50 @@
+/* Blog Card Overlay Gradient */
+.bento-item.blog-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.bento-item.blog-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.7) 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1);
+  z-index: 2;
+}
+.bento-item.blog-card:hover {
+  transform: scale(1.03);
+  z-index: 3;
+}
+.bento-item.blog-card:hover::after {
+  opacity: 1;
+}
+
+/* Footer Card Overlay Gradient */
+.bento-item.footer-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.bento-item.footer-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.8) 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1);
+  z-index: 2;
+}
+.bento-item.footer-card:hover {
+  transform: scale(1.03);
+  z-index: 3;
+}
+.bento-item.footer-card:hover::after {
+  opacity: 1;
+}
 /* Utility classes for intersection observer animation */
 .opacity-0 {
   opacity: 0 !important;
