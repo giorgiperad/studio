@@ -24,11 +24,3 @@ const ScrollIndicator: React.FC = () => {
 };
 
 export default ScrollIndicator;
-          100% { opacity: 0.3; }
-        }
-      `}</style>
-    </div>
-  );
-};
-
-export default ScrollIndicator;
