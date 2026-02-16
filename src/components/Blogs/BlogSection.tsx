@@ -7,7 +7,7 @@ interface BlogSectionProps {
   posts: BlogPost[]
 }
 
-const BlogSection = async ({ posts }: BlogSectionProps) => {
+const BlogSection = ({ posts }: BlogSectionProps) => {
   return (
     <section id="blogs" className="my-14">
       <SectionHeading
