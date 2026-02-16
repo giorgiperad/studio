@@ -19,7 +19,6 @@
   z-index: 3;
 }
 /* Removed misplaced variable declarations and properties */
-}
 .bento-item.footer-card:hover {
   color: var(--accent);
   z-index: 3;
