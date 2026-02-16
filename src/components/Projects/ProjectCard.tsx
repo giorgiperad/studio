@@ -33,17 +33,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ data }) => {
 
   const handleMouseMove = useBentoMouseSpotlight();
     return (
-      <div className={cn(
-        "glass-card bento-item project-card group relative flex flex-col justify-between transition-all duration-300 cursor-pointer",
-        className
-      )}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      ref={cardRef}
-      style={style}
-      tabIndex={0}
-      aria-label={project.title}
-    >
+      <div
+        className="glass-card bento-item project-card group relative flex flex-col justify-between transition-all duration-300 cursor-pointer"
+        onMouseMove={handleMouseMove}
+      >
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1">
           <div className="flex flex-col flex-wrap gap-3 sm:flex-row sm:items-center">
