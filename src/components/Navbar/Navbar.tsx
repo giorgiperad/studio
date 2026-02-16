@@ -1,17 +1,81 @@
+'use client'
 
-'use client';
-import Link from 'next/link';
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import { BurgerIcon, CloseIcon } from '../../utils/icons'
+import Logo from './Logo'
 
-const Navbar = () => (
-  <nav style={{position:'fixed',top:0,left:0,width:'100%',padding:'30px 60px',display:'flex',justifyContent:'space-between',alignItems:'center',zIndex:1000,backdropFilter:'blur(20px)',background:'var(--dark)',borderBottom:'1px solid rgba(255,255,255,0.05)'}}>
-    <div className="logo" style={{fontFamily:'JetBrains Mono,monospace',fontSize:'1.2em',fontWeight:600,color:'var(--primary)',letterSpacing:'-1px'}}>JD.</div>
-    <ul className="nav-links" style={{display:'flex',gap:'40px',listStyle:'none'}}>
-      <li><a href="#work">პროექტები</a></li>
-      <li><a href="#about">ჩემს შესახებ</a></li>
-      <li><a href="#services">სერვისები</a></li>
-      <li><a href="#contact">კონტაქტი</a></li>
-    </ul>
-  </nav>
-);
+const navItems = [
+  {
+    label: '_home',
+    href: '/',
+  },
+  {
+    label: '_projects',
+    href: '/#projects',
+  },
+  {
+    label: '_services',
+    href: '/#services',
+  },
+  { label: '_blogs', href: '/blogs' },
+  {
+    label: '_contact-me',
+    href: '/#contact',
+  },
+]
 
-export default Navbar;
+const Navbar = () => {
+  const [isVisible, setIsVisible] = useState(false)
+  const pathname = usePathname()
+
+  const toggleMenu = () => {
+    setIsVisible(!isVisible)
+  }
+
+  return (
+    <nav className="bg-primary/80 backdrop-blur-md border-border h-16 overflow-hidden border-b shadow-md">
+      <div className="mx-auto flex h-full w-dvw max-w-[1200px] items-center justify-between px-4 py-1">
+        {isVisible ? (
+          <div className="text-primary-content md:hidden font-mono tracking-widest text-lg">_menu</div>
+        ) : (
+          <Link href="/">
+            <div className="animate-fade-up text-primary-content relative flex items-center gap-3 transition-all duration-300 md:static">
+              <Logo />
+              <span className="text-accent font-extrabold text-xl tracking-tight drop-shadow-sm">john_doe</span>
+            </div>
+          </Link>
+        )}
+
+        <div className="md:hidden">
+          <button onClick={toggleMenu}>
+            {isVisible ? (
+              <CloseIcon className="text-primary-content" />
+            ) : (
+              <BurgerIcon className="text-primary-content" />
+            )}
+          </button>
+        </div>
+
+        <ul
+          className={`${isVisible ? 'flex' : 'hidden'} animate-fade-in bg-primary/90 backdrop-blur-xl absolute top-16 left-0 z-10 h-dvh w-dvw flex-col md:static md:top-0 md:flex md:h-full md:w-[72%] md:flex-row lg:w-[70%] rounded-b-3xl shadow-2xl`}> 
+          {navItems.map(({ label, href }) => (
+            <li
+              key={href}
+              onClick={() => setIsVisible(false)}
+              className="border-border flex items-center border-b px-4 text-2xl md:border-y-0 md:border-e md:text-base md:first:border-s md:last:ml-auto md:last:border-none md:last:px-0 lg:px-8">
+              <Link
+                href={href}
+                className={`text-primary-content hover:text-accent w-full py-7 transition-all duration-200 md:py-0 font-semibold tracking-wide ${pathname === href ? 'text-accent cursor-text' : ''}`}>
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  )
+}
+
+export default Navbar

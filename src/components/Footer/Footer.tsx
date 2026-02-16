@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="bg-secondary/80 backdrop-blur-2xl relative flex min-h-[560px] flex-col justify-between gap-20 overflow-hidden px-4 py-14 md:p-14 rounded-t-3xl shadow-2xl border-t border-white/10">
       <div className="relative z-20 grid grid-cols-1 items-start gap-20 md:grid-cols-2 md:gap-12">
-        <div className="glass-card bento-item footer-card rounded-2xl p-8 shadow-lg border border-white/10">
+        <div className="glass-card rounded-2xl p-8 shadow-lg border border-white/10">
           <h5 className="mb-8 flex items-center gap-2">
             <Logo width={30} height={24} />
             <span className="text-accent text-xl font-extrabold tracking-tight drop-shadow">Logoipsum</span>
@@ -21,7 +21,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <div className="flex flex-wrap gap-8 glass-card bento-item footer-card rounded-2xl p-8 shadow-md border border-white/10">
+        <div className="flex flex-wrap gap-8 glass-card rounded-2xl p-8 shadow-md border border-white/10">
           {footerLinks.map((link) => (
             <a
               href={link.href}
@@ -53,7 +53,7 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col justify-between gap-[200px] md:flex-row md:gap-8">
-          <div className="space-y-10 md:self-end glass-card bento-item footer-card rounded-2xl p-8 shadow-md border border-white/10">
+          <div className="space-y-10 md:self-end glass-card rounded-2xl p-8 shadow-md border border-white/10">
             <div className="flex flex-col">
               <h5 className="text-accent mb-4 text-xl font-bold">დაგვიკავშირდით</h5>
               <a
@@ -78,7 +78,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="md:self-end glass-card bento-item rounded-2xl p-8 shadow-md border border-white/10">
+          <div className="md:self-end glass-card rounded-2xl p-8 shadow-md border border-white/10">
             <p className="text-accent mb-8 text-base font-bold md:text-right">Languages</p>
             <div className="flex gap-8 md:gap-4 lg:gap-8">
               {languages.map((language, idx) => (
